@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cleaning Service</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #050505, #1a0d08, #000000);
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Glass Effect */
+        .glass {
+            background: rgba(35, 18, 10, 0.55);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Glow */
+        .glow {
+            box-shadow:
+                0 0 20px rgba(249, 115, 22, 0.10),
+                0 0 60px rgba(234, 88, 12, 0.08);
+        }
+
+        /* Floating Animation */
+        .animate-float {
+            animation: float 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* Input Style */
+        .input-style {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: white;
+        }
+
+        .input-style:focus {
+            border-color: #f97316;
+            box-shadow: 0 0 20px rgba(249, 115, 22, 0.20);
+            outline: none;
+        }
+
+        /* Hover */
+        .card-hover {
+            transition: 0.4s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-6px);
+            border-color: rgba(249, 115, 22, 0.4);
+        }
+
+        /* Shine Button */
+        .shine-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shine-btn::before {
+
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255,255,255,0.45),
+                transparent
+            );
+
+            transform: skewX(-25deg);
+
+            animation: shine 4s infinite;
+        }
+
+        @keyframes shine {
+
+            100% {
+                left: 150%;
+            }
+
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ea580c;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center px-4 py-6 text-white">
+
+    <!-- Background Glow -->
+    <div class="absolute top-0 left-0 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl"></div>
+
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-red-500/10 rounded-full blur-3xl"></div>
+
+    <!-- Main Container -->
+    <div class="relative w-full max-w-7xl grid lg:grid-cols-2 gap-10 items-center z-10">
+
+        <!-- Brand Logo Section -->
+        <div class="absolute top-2 left-[12%] z-50 animate-float">
+
+            <div
+                class="group flex items-center justify-center p-3 rounded-full
+                bg-white/5 backdrop-blur-2xl
+                border border-white/10
+                shadow-2xl shadow-orange-500/10
+                hover:shadow-orange-500/20
+                hover:border-orange-400/30
+                transition duration-500">
+
+                <!-- Logo Image -->
+                <img
+                    src="GharCare.png"
+                    alt="GharCare Logo"
+                    class="w-[170px] rounded-full md:w-[130px] object-contain
+                    drop-shadow-[0_0_25px_rgba(249,115,22,0.25)]
+                    transition duration-500
+                    group-hover:scale-105">
+
+            </div>
+
+        </div>
+
+        <!-- Left Content -->
+        <div class="space-y-5 animate-float pt-16">
+
+            <!-- Badge -->
+            <div
+                class="inline-flex items-center mt-[13%] gap-2 px-5 py-2 rounded-full bg-white/5 border border-orange-400/20 text-sm tracking-widest uppercase text-orange-300">
+                ✨ Premium Cleaning Service
+            </div>
+
+            <!-- Heading -->
+            <div>
+                <h1 class="text-4xl md:text-5xl font-bold leading-tight">
+
+                    Modern & Spotless <br>
+
+                    <span
+                        class="bg-gradient-to-r from-orange-300 to-red-500 bg-clip-text text-transparent">
+
+                        Cleaning Service
+
+                    </span>
+
+                </h1>
+            </div>
+
+            <!-- Paragraph -->
+            <p class="text-gray-400 text-base leading-relaxed max-w-xl">
+
+                Experience premium home cleaning, deep sanitization,
+                luxury hygiene care and spotless cleaning solutions from professionals.
+
+            </p>
+
+            <!-- Features -->
+            <div class="grid sm:grid-cols-2 gap-4 pt-2">
+
+                <!-- Card 1 -->
+                <div class="glass rounded-2xl p-4 card-hover">
+
+                    <div
+                        class="w-11 h-11 rounded-xl bg-orange-500/10 flex items-center justify-center text-2xl mb-3">
+                        🧹
+                    </div>
+
+                    <h3 class="text-lg font-semibold mb-1">
+                        Deep Cleaning
+                    </h3>
+
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Professional cleaning solutions for a spotless environment.
+                    </p>
+
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass rounded-2xl p-4 card-hover">
+
+                    <div
+                        class="w-11 h-11 rounded-xl bg-red-500/10 flex items-center justify-center text-2xl mb-3">
+                        ✨
+                    </div>
+
+                    <h3 class="text-lg font-semibold mb-1">
+                        Luxury Hygiene
+                    </h3>
+
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Eco-friendly premium cleaning products for healthy living.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Right Form -->
+        <div class="glass glow rounded-[30px] p-6 md:p-7 card-hover">
+
+            <!-- Form Header -->
+            <div class="mb-5">
+
+                <h2 class="text-3xl font-bold mb-2">
+                    Book Cleaning Service
+                </h2>
+
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Fill in your details and our cleaning specialist will contact you shortly.
+                </p>
+
+            </div>
+
+            <!-- Form -->
+            <form class="space-y-4">
+
+                <!-- Name + Phone -->
+                <div class="grid md:grid-cols-2 gap-4">
+
+                    <div>
+                        <label class="block mb-2 text-sm text-gray-300">
+                            Full Name
+                        </label>
+
+                        <input type="text" placeholder="Your name"
+                            class="w-full px-4 py-3 rounded-xl input-style placeholder-gray-500 transition duration-300">
+                    </div>
+
+                    <div>
+                        <label class="block mb-2 text-sm text-gray-300">
+                            Phone Number
+                        </label>
+
+                        <input type="tel" placeholder="Phone number"
+                            class="w-full px-4 py-3 rounded-xl input-style placeholder-gray-500 transition duration-300">
+                    </div>
+
+                </div>
+
+                <!-- Email + Service -->
+                <div class="grid md:grid-cols-2 gap-4">
+
+                    <div>
+                        <label class="block mb-2 text-sm text-gray-300">
+                            Email Address
+                        </label>
+
+                        <input type="email" placeholder="Email address"
+                            class="w-full px-4 py-3 rounded-xl input-style placeholder-gray-500 transition duration-300">
+                    </div>
+
+                    <div>
+                        <label class="block mb-2 text-sm text-gray-300">
+                            Cleaning Service Type
+                        </label>
+
+                        <select
+                            class="w-full px-4 py-3 rounded-xl input-style text-gray-300 transition duration-300">
+
+                            <option>Select Service</option>
+                            <option>Home Cleaning</option>
+                            <option>Deep Cleaning</option>
+                            <option>Kitchen Cleaning</option>
+                            <option>Bathroom Cleaning</option>
+                            <option>Office Cleaning</option>
+
+                        </select>
+                    </div>
+
+                </div>
+
+                <!-- Address -->
+                <div>
+                    <label class="block mb-2 text-sm text-gray-300">
+                        Address
+                    </label>
+
+                    <textarea rows="3" placeholder="Enter your address"
+                        class="w-full px-4 py-3 rounded-xl input-style placeholder-gray-500 transition duration-300"></textarea>
+                </div>
+
+                <!-- Date -->
+                <div>
+                    <label class="block mb-2 text-sm text-gray-300">
+                        Preferred Date
+                    </label>
+
+                    <input type="date"
+                        class="w-full px-4 py-3 rounded-xl input-style text-gray-300 transition duration-300">
+                </div>
+
+                <!-- Submit -->
+                <button type="submit"
+                    class="shine-btn relative overflow-hidden w-full py-4 rounded-xl 
+                    bg-gradient-to-r from-orange-500 to-red-500 
+                    text-white font-semibold text-lg
+                    hover:scale-[1.02]
+                    hover:shadow-orange-500/20
+                    hover:shadow-2xl
+                    transition duration-300">
+
+                    Book Cleaning Service
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

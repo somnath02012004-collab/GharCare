@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hair Care Service</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #050505, #1a0f14, #000000);
+            overflow: hidden; /* 🔥 NO SCROLL */
+            height: 100vh;
+            position: relative;
+            color: white;
+        }
+
+        /* Glass */
+        .glass {
+            background: rgba(25, 18, 22, 0.55);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Glow */
+        .glow {
+            box-shadow:
+                0 0 20px rgba(236, 72, 153, 0.12),
+                0 0 60px rgba(244, 114, 182, 0.08);
+        }
+
+        /* Floating */
+        .animate-float {
+            animation: float 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Input */
+        .input-style {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .input-style:focus {
+            border-color: #ec4899;
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.20);
+            outline: none;
+        }
+
+        /* Hover */
+        .card-hover {
+            transition: 0.4s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            border-color: rgba(236, 72, 153, 0.4);
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center px-4 py-6">
+
+    <!-- Background Glow -->
+    <div class="absolute top-0 left-0 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-rose-500/10 rounded-full blur-3xl"></div>
+
+    <!-- MAIN -->
+    <div class="relative w-full max-w-7xl grid lg:grid-cols-2 gap-14 items-center z-10">
+
+        <!-- LEFT SIDE -->
+        <div class="space-y-7">
+
+            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/5 border border-pink-400/20 text-sm tracking-widest uppercase text-pink-300">
+                ✨ Professional Hair Care
+            </div>
+
+            <h1 class="text-5xl md:text-6xl font-bold leading-tight">
+                Premium & Stylish <br>
+                <span class="bg-gradient-to-r from-pink-400 to-rose-500 bg-clip-text text-transparent">
+                    Hair Care Service
+                </span>
+            </h1>
+
+            <p class="text-gray-400 text-lg leading-relaxed max-w-xl">
+                Experience professional hair treatments, spa, styling and coloring services from experts.
+            </p>
+
+            <div class="grid sm:grid-cols-2 gap-5 pt-4">
+
+                <div class="glass rounded-2xl p-5 card-hover">
+                    <div class="text-2xl mb-3">💇</div>
+                    <h3 class="font-semibold mb-1">Expert Stylists</h3>
+                    <p class="text-gray-400 text-sm">Professional hair experts</p>
+                </div>
+
+                <div class="glass rounded-2xl p-5 card-hover">
+                    <div class="text-2xl mb-3">🌸</div>
+                    <h3 class="font-semibold mb-1">Premium Products</h3>
+                    <p class="text-gray-400 text-sm">Safe & branded care</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT FORM -->
+        
+    </div>
+
+</body>
+
+</html>

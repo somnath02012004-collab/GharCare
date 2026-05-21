@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password - GharCare</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #020617, #111827, #000000);
+            overflow-x: hidden;
+            color: white;
+        }
+
+        /* Glass */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Glow */
+        .glow {
+            box-shadow:
+                0 0 30px rgba(168, 85, 247, 0.15),
+                0 0 80px rgba(59, 130, 246, 0.10);
+        }
+
+        /* Fade */
+        .fade-up {
+            animation: fadeUp 0.9s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Input */
+        .input-style {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: white;
+        }
+
+        .input-style:focus {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+            outline: none;
+        }
+
+        /* Button shine */
+        .shine-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shine-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transform: skewX(-25deg);
+            animation: shine 4s infinite;
+        }
+
+        @keyframes shine {
+            100% {
+                left: 150%;
+            }
+        }
+
+        /* Card hover */
+        .card-hover {
+            transition: 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            border-color: rgba(168, 85, 247, 0.3);
+        }
+
+        /* Scroll */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #8b5cf6;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="absolute top-0 left-0 w-72 h-72 bg-violet-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-0 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"></div>
+
+    <!-- MAIN -->
+    <section class="min-h-screen flex items-start justify-center px-4 py-12">
+
+        <div class="w-full max-w-6xl grid lg:grid-cols-2 gap-6 items-center">
+
+            <!-- LEFT -->
+            <div class="space-y-6 fade-up">
+
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-violet-400/20 text-xs text-violet-300 uppercase tracking-widest">
+                    🔑 Password Recovery
+                </div>
+
+                <h1 class="text-4xl md:text-5xl font-bold leading-tight">
+                    Forgot Your <br>
+                    <span class="bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent">
+                        Password?
+                    </span>
+                </h1>
+
+                <p class="text-gray-400 max-w-lg">
+                    Enter your email and we will send OTP to reset your password securely.
+                </p>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+
+                    <div class="glass rounded-2xl p-4 card-hover">
+                        <div class="text-2xl mb-2">🔐</div>
+                        <h3 class="font-semibold">Secure Reset</h3>
+                        <p class="text-sm text-gray-400">OTP protected system</p>
+                    </div>
+
+                    <div class="glass rounded-2xl p-4 card-hover">
+                        <div class="text-2xl mb-2">⚡</div>
+                        <h3 class="font-semibold">Fast Recovery</h3>
+                        <p class="text-sm text-gray-400">Instant password reset</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- RIGHT FORM -->
+            <div class="glass glow rounded-[30px] p-6 md:p-8 fade-up w-full max-w-md mx-auto">
+
+                <!-- Logo -->
+                <div class="flex justify-center mb-4">
+                    <img src="GharCare.png"
+                        class="w-20 h-20 rounded-full border-4 border-violet-400/30 object-cover">
+                </div>
+
+                <div class="text-center mb-5">
+                    <h2 class="text-3xl font-bold">Reset Password</h2>
+                    <p class="text-gray-400 text-sm">Enter details to continue</p>
+                </div>
+
+                <!-- FORM -->
+                <form class="space-y-4">
+
+                    <div>
+                        <label class="text-sm text-gray-300">Email Address</label>
+                        <input type="email" placeholder="Enter email"
+                            class="w-full mt-2 px-4 py-3 rounded-2xl input-style">
+                    </div>
+
+                    <div>
+                        <label class="text-sm text-gray-300">New Password</label>
+                        <input type="password" placeholder="New password"
+                            class="w-full mt-2 px-4 py-3 rounded-2xl input-style">
+                    </div>
+
+                    <div>
+                        <label class="text-sm text-gray-300">Confirm Password</label>
+                        <input type="password" placeholder="Confirm password"
+                            class="w-full mt-2 px-4 py-3 rounded-2xl input-style">
+                    </div>
+
+                    <!-- OTP Verification (Styled like Signup page) -->
+
+                    <div class="grid md:grid-cols-[1fr_auto] gap-4">
+
+                        <!-- OTP Input -->
+                        <div class="relative">
+
+                            <input type="text"
+                                placeholder="Enter OTP"
+                                class="w-full px-5 py-4 rounded-2xl input-style">
+
+                            <!-- small helper text -->
+                            <p class="text-xs text-gray-500 mt-2 ml-1">
+                                We sent a 6-digit OTP to your email
+                            </p>
+
+                        </div>
+
+                        <!-- Send OTP Button -->
+                        <button
+                            type="button"
+                            class="shine-btn px-6 py-4 rounded-2xl bg-gradient-to-r from-violet-500 to-blue-600 text-white font-semibold hover:scale-105 transition duration-300">
+
+                            Send OTP
+
+                        </button>
+
+                    </div>
+
+                    <button type="submit"
+                        class="shine-btn w-full py-3 rounded-2xl bg-gradient-to-r from-violet-500 to-blue-600 font-semibold">
+                        Reset Password
+                    </button>
+
+                    <p class="text-center text-sm text-gray-400">
+                        Remember password?
+                        <a href="#" class="text-violet-300 hover:text-violet-400">Login</a>
+                    </p>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>
