@@ -133,7 +133,8 @@
                         </label>
 
                         <input type="email"
-                            placeholder="Enter your email"
+                            placeholder="Enter your email or Username"
+                            name = "name"
                             class="w-full px-5 py-4 rounded-2xl input-style transition duration-300">
 
                     </div>
@@ -147,6 +148,7 @@
 
                         <input type="password"
                             placeholder="Enter your password"
+                            name = "password"
                             class="w-full px-5 py-4 rounded-2xl input-style transition duration-300">
 
                     </div>
@@ -173,6 +175,9 @@
                     </div>
 
                     <!-- Login Button -->
+
+                    <form method="POST" action="{% url 'login' %}">
+                    {% csrf_token %}
                     <button
                         type="submit"
                         class="shine-btn w-full py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold text-lg hover:scale-[1.02] transition duration-300 shadow-2xl shadow-cyan-500/20">
