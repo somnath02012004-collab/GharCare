@@ -1,0 +1,345 @@
+
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>GharCare Service Provider Registration</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static "css/provider-ragister.css" %}">
+
+</head>
+
+<body class="flex items-center justify-center px-4 py-10">
+
+    <!-- Background Glow -->
+
+    <div class="absolute top-0 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
+
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+
+    <!-- ================= MAIN ================= -->
+
+    <div class="relative w-full max-w-7xl grid lg:grid-cols-2 gap-10 items-center z-10">
+
+        <!-- ================= LEFT ================= -->
+
+        <div class="space-y-6 animate-soft">
+
+            <!-- Logo -->
+
+            <div class="flex items-center gap-4">
+
+                <img
+                    src="{% static "assets/GharCare.png" %}"
+                    alt="GharCare Logo"
+                    class="w-28 h-28 rounded-full object-cover border border-white/10 shadow-2xl">
+
+                <div>
+
+                    <h2 class="text-2xl font-bold">
+                        GharCare
+                    </h2>
+
+                    <p class="text-gray-400 text-sm">
+                        Service Provider Portal
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- Badge -->
+
+            <div
+                class="inline-flex items-center gap-2 px-5 py-2 rounded-full
+                bg-white/5 border border-cyan-400/20
+                text-sm tracking-widest uppercase text-cyan-300">
+
+                🚀 Become a Service Partner
+
+            </div>
+
+            <!-- Heading -->
+
+            <h1 class="text-4xl md:text-5xl font-bold leading-tight">
+
+                Join Our Trusted <br>
+
+                <span
+                    class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+
+                    GharCare Team
+
+                </span>
+
+            </h1>
+
+            <!-- Paragraph -->
+
+            <p class="text-gray-400 text-lg leading-relaxed max-w-xl">
+
+                Apply as a professional service provider and grow your career
+                with GharCare. Get customer bookings, flexible work and trusted support.
+
+            </p>
+
+            <!-- Features -->
+
+            <div class="grid sm:grid-cols-2 gap-4 pt-2">
+
+                <div class="glass rounded-2xl p-5 card-hover">
+
+                    <div
+                        class="w-12 h-12 rounded-xl bg-cyan-500/10
+                        flex items-center justify-center text-2xl mb-3">
+
+                        💼
+
+                    </div>
+
+                    <h3 class="text-lg font-semibold mb-1">
+                        Flexible Work
+                    </h3>
+
+                    <p class="text-gray-400 text-sm">
+                        Work anytime with flexible schedule.
+                    </p>
+
+                </div>
+
+                <div class="glass rounded-2xl p-5 card-hover">
+
+                    <div
+                        class="w-12 h-12 rounded-xl bg-blue-500/10
+                        flex items-center justify-center text-2xl mb-3">
+
+                        💰
+
+                    </div>
+
+                    <h3 class="text-lg font-semibold mb-1">
+                        Daily Earnings
+                    </h3>
+
+                    <p class="text-gray-400 text-sm">
+                        Earn more with regular customer bookings.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ================= FORM ================= -->
+
+        <div class="glass glow rounded-[30px] p-6 md:p-8 card-hover">
+
+            <div class="mb-6">
+
+                <h2 class="text-3xl font-bold mb-2">
+                    Service Provider Registration
+                </h2>
+
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Fill your details and apply to become a GharCare partner.
+                </p>
+
+            </div>
+
+            <form class="space-y-4">
+
+                <!-- Full Name -->
+
+                <div>
+
+                    <label class="block mb-2 text-sm text-gray-300">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        placeholder="Enter your full name"
+
+                        class="w-full px-4 py-3 rounded-xl
+                        input-style placeholder-gray-500">
+
+                </div>
+
+                <!-- Phone -->
+
+                <div>
+
+                    <label class="block mb-2 text-sm text-gray-300">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        placeholder="Enter phone number"
+
+                        class="w-full px-4 py-3 rounded-xl
+                        input-style placeholder-gray-500">
+
+                </div>
+
+                <!-- Email -->
+
+                <div>
+
+                    <label class="block mb-2 text-sm text-gray-300">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        placeholder="Enter email address"
+
+                        class="w-full px-4 py-3 rounded-xl
+                        input-style placeholder-gray-500">
+
+                </div>
+
+                <!-- Service -->
+
+                <div>
+
+                    <label class="block mb-2 text-sm text-gray-300">
+                        Select Service
+                    </label>
+
+                    <select
+                        class="w-full px-4 py-3 rounded-xl
+                        input-style text-gray-300">
+
+                        <option>Select Service</option>
+
+                        <option>AC Repair Service</option>
+
+                        <option>Plumbing Service</option>
+
+                        <option>Cleaning Service</option>
+
+                        <option>Spa Service</option>
+
+                        <option>Beauty Service</option>
+
+                        <option>Hair Care Service</option>
+
+                    </select>
+
+                </div>
+
+                <!-- Experience -->
+
+                <div>
+
+                    <label class="block mb-2 text-sm text-gray-300">
+                        Work Experience
+                    </label>
+
+                    <input
+                        type="text"
+                        placeholder="Example: 3 Years"
+
+                        class="w-full px-4 py-3 rounded-xl
+                        input-style placeholder-gray-500">
+
+                </div>
+
+                <!-- Address -->
+
+                <div>
+
+                    <label class="block mb-2 text-sm text-gray-300">
+                        Address
+                    </label>
+
+                    <textarea
+                        rows="3"
+                        placeholder="Enter your address"
+
+                        class="w-full px-4 py-3 rounded-xl
+                        input-style placeholder-gray-500"></textarea>
+
+                </div>
+
+                <!-- Profile Picture -->
+
+                <div>
+
+                    <label class="block mb-2 text-sm text-gray-300">
+                        Upload Profile Picture
+                    </label>
+
+                    <input
+                        type="file"
+                        accept="image/*"
+                        capture="user"
+
+                        class="w-full px-4 py-3 rounded-xl
+                        input-style text-gray-400">
+
+                </div>
+
+                <!-- ID Proof -->
+
+                <div>
+
+                    <label class="block mb-2 text-sm text-gray-300">
+                        Upload ID Proof
+                    </label>
+
+                    <input
+                        type="file"
+
+                        class="w-full px-4 py-3 rounded-xl
+                        input-style text-gray-400">
+
+                </div>
+
+                <!-- Submit -->
+
+                <button
+                    type="submit"
+
+                    class="shine-btn relative overflow-hidden
+                    w-full py-4 rounded-xl
+                    bg-gradient-to-r from-cyan-500 to-blue-600
+                    text-white font-semibold text-lg
+                    hover:scale-[1.02]
+                    hover:shadow-cyan-500/20
+                    hover:shadow-2xl
+                    transition duration-300">
+
+                    Register Now
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+
+{% endblock content %}
