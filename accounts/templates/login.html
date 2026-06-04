@@ -1,9 +1,32 @@
 
-{% extends 'base.html' %}
 
 {% load static %}
 
 {% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - GharCare</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+     <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
 
     <!-- Background Glow -->
 
@@ -104,7 +127,7 @@
                 <!-- Logo -->
                 <div class="flex justify-center mb-5">
 
-                    <img src="GharCare.png"
+                    <img src="{% static 'assets/GharCare.png' %}"
                         class="w-24 h-24 rounded-full border-4 border-cyan-400/30 object-cover">
 
                 </div>
@@ -165,7 +188,7 @@
 
                         </label>
 
-                        <a href="#"
+                        <a href="{% url 'forgot' %}"
                             class="text-cyan-300 hover:text-cyan-400 transition duration-300">
 
                             Forgot Password?
