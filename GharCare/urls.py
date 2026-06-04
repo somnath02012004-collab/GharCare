@@ -23,5 +23,6 @@ urlpatterns = [
     path('', include('accounts.urls')),
     path('', include('bookings.urls')),
     path('',views.home, name='home'),
-    path('about',views.about, name='about'),
+    path('about/',views.about, name='about'),
+    path('provider/',views.provider, name='provider'),
 ]

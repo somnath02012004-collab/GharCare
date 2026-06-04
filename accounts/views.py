@@ -42,3 +42,6 @@ def signup(request):
 
 def forgot(request):
     return render(request, 'forgot-pass.html')
+
+def ragister(request):
+    return render(request, 'provider-ragister.html')
