@@ -163,162 +163,132 @@
 
             </div>
 
-            <form class="space-y-4">
+            <form method="POST" enctype="multipart/form-data" class="space-y-4">
+                {% csrf_token %}
 
                 <!-- Full Name -->
-
                 <div>
-
                     <label class="block mb-2 text-sm text-gray-300">
                         Full Name
                     </label>
 
                     <input
                         type="text"
+                        name="full_name"
                         placeholder="Enter your full name"
-
-                        class="w-full px-4 py-3 rounded-xl
-                        input-style placeholder-gray-500">
-
+                        class="w-full px-4 py-3 rounded-xl input-style placeholder-gray-500"
+                        required>
                 </div>
 
                 <!-- Phone -->
-
                 <div>
-
                     <label class="block mb-2 text-sm text-gray-300">
                         Phone Number
                     </label>
 
                     <input
                         type="tel"
+                        name="phone"
                         placeholder="Enter phone number"
-
-                        class="w-full px-4 py-3 rounded-xl
-                        input-style placeholder-gray-500">
-
+                        class="w-full px-4 py-3 rounded-xl input-style placeholder-gray-500"
+                        required>
                 </div>
 
                 <!-- Email -->
-
                 <div>
-
                     <label class="block mb-2 text-sm text-gray-300">
                         Email Address
                     </label>
 
                     <input
                         type="email"
+                        name="email"
                         placeholder="Enter email address"
-
-                        class="w-full px-4 py-3 rounded-xl
-                        input-style placeholder-gray-500">
-
+                        class="w-full px-4 py-3 rounded-xl input-style placeholder-gray-500"
+                        required>
                 </div>
 
                 <!-- Service -->
-
                 <div>
-
                     <label class="block mb-2 text-sm text-gray-300">
                         Select Service
                     </label>
 
                     <select
-                        class="w-full px-4 py-3 rounded-xl
-                        input-style text-gray-300">
+                        name="service"
+                        class="w-full px-4 py-3 rounded-xl bg-black input-style text-gray-300"
+                        required>
 
-                        <option>Select Service</option>
-
-                        <option>AC Repair Service</option>
-
-                        <option>Plumbing Service</option>
-
-                        <option>Cleaning Service</option>
-
-                        <option>Spa Service</option>
-
-                        <option>Beauty Service</option>
-
-                        <option>Hair Care Service</option>
+                        <option value="">Select Service</option>
+                        <option value="AC Repair Service">AC Repair Service</option>
+                        <option value="Plumbing Service">Plumbing Service</option>
+                        <option value="Cleaning Service">Cleaning Service</option>
+                        <option value="Spa Service">Spa Service</option>
+                        <option value="Beauty Service">Beauty Service</option>
+                        <option value="Hair Care Service">Hair Care Service</option>
 
                     </select>
-
                 </div>
 
                 <!-- Experience -->
-
                 <div>
-
                     <label class="block mb-2 text-sm text-gray-300">
                         Work Experience
                     </label>
 
                     <input
                         type="text"
+                        name="experience"
                         placeholder="Example: 3 Years"
-
-                        class="w-full px-4 py-3 rounded-xl
-                        input-style placeholder-gray-500">
-
+                        class="w-full px-4 py-3 rounded-xl input-style placeholder-gray-500"
+                        required>
                 </div>
 
                 <!-- Address -->
-
                 <div>
-
                     <label class="block mb-2 text-sm text-gray-300">
                         Address
                     </label>
 
                     <textarea
                         rows="3"
+                        name="address"
                         placeholder="Enter your address"
-
-                        class="w-full px-4 py-3 rounded-xl
-                        input-style placeholder-gray-500"></textarea>
-
+                        class="w-full px-4 py-3 rounded-xl input-style placeholder-gray-500"
+                        required></textarea>
                 </div>
 
                 <!-- Profile Picture -->
-
                 <div>
-
                     <label class="block mb-2 text-sm text-gray-300">
                         Upload Profile Picture
                     </label>
 
                     <input
                         type="file"
+                        name="profile_picture"
                         accept="image/*"
                         capture="user"
-
-                        class="w-full px-4 py-3 rounded-xl
-                        input-style text-gray-400">
-
+                        class="w-full px-4 py-3 rounded-xl input-style text-gray-400"
+                        required>
                 </div>
 
                 <!-- ID Proof -->
-
                 <div>
-
                     <label class="block mb-2 text-sm text-gray-300">
                         Upload ID Proof
                     </label>
 
                     <input
                         type="file"
-
-                        class="w-full px-4 py-3 rounded-xl
-                        input-style text-gray-400">
-
+                        name="id_proof"
+                        class="w-full px-4 py-3 rounded-xl input-style text-gray-400"
+                        required>
                 </div>
 
                 <!-- Submit -->
-
                 <button
                     type="submit"
-
                     class="shine-btn relative overflow-hidden
                     w-full py-4 rounded-xl
                     bg-gradient-to-r from-cyan-500 to-blue-600
