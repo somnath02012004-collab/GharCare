@@ -1,0 +1,284 @@
+{% load static %}
+
+{% block content %}
+
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>All Services | GharCare</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/all-services.css' %}">
+
+</head>
+
+<body class="px-5 py-6">
+
+    <!-- Background Glow -->
+    <div class="absolute top-0 left-0 w-96 h-96 bg-fuchsia-500/10 rounded-full blur-3xl"></div>
+
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+
+    <!-- Main Container -->
+    <div class="max-w-7xl mx-auto relative z-10">
+
+        <!-- Top Section -->
+        <div class="flex items-center justify-between flex-wrap gap-5 mb-8 fade-up">
+
+            <!-- Logo -->
+            <div class="flex items-center gap-4">
+
+                <img src="{% static 'assets/GharCare.png' %}"
+                    class="w-16 h-16 rounded-full object-cover border border-white/10 shadow-2xl">
+
+                <div>
+
+                    <h1 class="text-3xl font-bold">
+                        GharCare
+                    </h1>
+
+                    <p class="text-sm tracking-[4px] uppercase text-fuchsia-300">
+                        All Services
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- Back Button -->
+            <button
+                class="shine-btn px-7 py-3 rounded-2xl bg-gradient-to-r from-fuchsia-700 to-purple-900 text-white font-semibold hover:scale-105 transition duration-300 shadow-2xl shadow-fuchsia-500/20">
+
+                🏠 Back To Home
+
+            </button>
+
+        </div>
+
+        <!-- Hero Section -->
+        <div class="glass glow rounded-[35px] p-8 md:p-10 mb-8 fade-up">
+
+            <div class="grid lg:grid-cols-2 gap-10 items-center">
+
+                <!-- Left -->
+                <div class="space-y-5">
+
+                    <div
+                        class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-fuchsia-400/20 bg-white/5 text-fuchsia-300 text-sm tracking-widest uppercase">
+
+                        ✨ Premium Home Services
+
+                    </div>
+
+                    <h2 class="text-4xl md:text-5xl font-bold leading-tight">
+
+                        Choose Your <br>
+
+                        <span
+                            class="bg-gradient-to-r from-fuchsia-400 to-purple-400 bg-clip-text text-transparent">
+
+                            Perfect Service
+
+                        </span>
+
+                    </h2>
+
+                    <p class="text-gray-400 leading-relaxed max-w-2xl">
+
+                        Book premium home services with trusted professionals.
+                        Fast, secure and luxury experience for your modern lifestyle.
+
+                    </p>
+
+                </div>
+
+                <!-- Right -->
+                <div class="flex justify-center">
+
+                    <div
+                        class="w-[260px] h-[260px] rounded-full bg-gradient-to-r from-fuchsia-600/20 to-purple-700/20 blur-2xl absolute">
+                    </div>
+
+                    <img src="{% static 'assets/GharCare.png' %}"
+                        class="relative w-[220px] float-card rounded-[20%] rop-shadow-[0_0_40px_rgba(192,132,252,0.35)]">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Services Grid -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 fade-up">
+
+            <!-- Card 1 -->
+            <div class="glass service-card rounded-3xl p-6">
+
+                <div
+                    class="icon-box w-16 h-16 rounded-2xl bg-fuchsia-500/10 flex items-center justify-center text-3xl mb-5">
+                    ❄
+                </div>
+
+                <h3 class="text-2xl font-semibold mb-3">
+                    AC Repair
+                </h3>
+
+                <p class="text-gray-400 text-sm leading-relaxed mb-5">
+                    Expert AC repair, installation and maintenance support.
+                </p>
+
+                <button
+                    class="shine-btn w-full py-3 rounded-xl bg-gradient-to-r from-fuchsia-700 to-purple-900 font-semibold hover:scale-[1.02] transition duration-300">
+                    <a href="{% url 'engineers' %}">
+                        🛒 Book Now
+                    </a>
+                </button>
+
+            </div>
+
+            <!-- Card 2 -->
+            <div class="glass service-card rounded-3xl p-6">
+
+                <div
+                    class="icon-box w-16 h-16 rounded-2xl bg-pink-500/10 flex items-center justify-center text-3xl mb-5">
+                    💄
+                </div>
+
+                <h3 class="text-2xl font-semibold mb-3">
+                    Beauty Care
+                </h3>
+
+                <p class="text-gray-400 text-sm leading-relaxed mb-5">
+                    Luxury beauty and skincare treatments by professionals.
+                </p>
+
+                <button
+                    class="shine-btn w-full py-3 rounded-xl bg-gradient-to-r from-fuchsia-700 to-purple-900 font-semibold hover:scale-[1.02] transition duration-300">
+
+                    🛒 Book Now
+
+                </button>
+
+            </div>
+
+            <!-- Card 3 -->
+            <div class="glass service-card rounded-3xl p-6">
+
+                <div
+                    class="icon-box w-16 h-16 rounded-2xl bg-violet-500/10 flex items-center justify-center text-3xl mb-5">
+                    🚰
+                </div>
+
+                <h3 class="text-2xl font-semibold mb-3">
+                    Plumbing
+                </h3>
+
+                <p class="text-gray-400 text-sm leading-relaxed mb-5">
+                    Fast plumbing solutions for leakage and repair services.
+                </p>
+
+                <button
+                    class="shine-btn w-full py-3 rounded-xl bg-gradient-to-r from-fuchsia-700 to-purple-900 font-semibold hover:scale-[1.02] transition duration-300">
+
+                    🛒 Book Now
+
+                </button>
+
+            </div>
+
+            <!-- Card 4 -->
+            <div class="glass service-card rounded-3xl p-6">
+
+                <div
+                    class="icon-box w-16 h-16 rounded-2xl bg-purple-500/10 flex items-center justify-center text-3xl mb-5">
+                    💆
+                </div>
+
+                <h3 class="text-2xl font-semibold mb-3">
+                    Spa Care
+                </h3>
+
+                <p class="text-gray-400 text-sm leading-relaxed mb-5">
+                    Relaxing wellness and luxury spa therapy experience.
+                </p>
+
+                <button
+                    class="shine-btn w-full py-3 rounded-xl bg-gradient-to-r from-fuchsia-700 to-purple-900 font-semibold hover:scale-[1.02] transition duration-300">
+
+                    🛒 Book Now
+
+                </button>
+
+            </div>
+
+            <!-- Card 5 -->
+            <div class="glass service-card rounded-3xl p-6">
+
+                <div
+                    class="icon-box w-16 h-16 rounded-2xl bg-rose-500/10 flex items-center justify-center text-3xl mb-5">
+                    🧹
+                </div>
+
+                <h3 class="text-2xl font-semibold mb-3">
+                    Cleaning
+                </h3>
+
+                <p class="text-gray-400 text-sm leading-relaxed mb-5">
+                    Deep cleaning and hygiene services for modern homes.
+                </p>
+
+                <button
+                    class="shine-btn w-full py-3 rounded-xl bg-gradient-to-r from-fuchsia-700 to-purple-900 font-semibold hover:scale-[1.02] transition duration-300">
+
+                    🛒 Book Now
+
+                </button>
+
+            </div>
+
+            <!-- Card 6 -->
+            <div class="glass service-card rounded-3xl p-6">
+
+                <div
+                    class="icon-box w-16 h-16 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-3xl mb-5">
+                    ✂
+                </div>
+
+                <h3 class="text-2xl font-semibold mb-3">
+                    Hair Care
+                </h3>
+
+                <p class="text-gray-400 text-sm leading-relaxed mb-5">
+                    Premium hair styling and professional hair treatments.
+                </p>
+
+                <button
+                    class="shine-btn w-full py-3 rounded-xl bg-gradient-to-r from-fuchsia-700 to-purple-900 font-semibold hover:scale-[1.02] transition duration-300">
+
+                    🛒 Book Now
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+
+{% endblock content %}
