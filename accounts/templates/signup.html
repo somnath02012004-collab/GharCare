@@ -113,7 +113,7 @@
                 <div
                     class="w-28 h-28 rounded-full border-4 border-cyan-400/40 flex items-center justify-center bg-black/30">
 
-                    <img src="{% static 'images/GharCare.png' %}"
+                    <img src="{% static 'assets/GharCare.png' %}"
                         class="w-20 h-20 rounded-full object-cover">
 
                 </div>
@@ -138,17 +138,20 @@
             </div>
 
             <!-- FORM -->
-            <form class="space-y-5">
+            <form method = "POST" class="space-y-5">
+                {% csrf_token %}
 
                 <!-- Name -->
                 <div class="grid md:grid-cols-2 gap-4">
 
                     <input type="text"
                         placeholder="First Name"
+                        name = "first_name"
                         class="w-full px-5 py-4 rounded-2xl bg-white/10 border border-white/10 outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/30 transition duration-300 text-white placeholder-gray-400">
 
                     <input type="text"
                         placeholder="Last Name"
+                        name = "last_name"
                         class="w-full px-5 py-4 rounded-2xl bg-white/10 border border-white/10 outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/30 transition duration-300 text-white placeholder-gray-400">
 
                 </div>
@@ -156,6 +159,7 @@
                 <!-- Email -->
                 <input type="email"
                     placeholder="Email Address"
+                    name = "email"
                     class="w-full px-5 py-4 rounded-2xl bg-white/10 border border-white/10 outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/30 transition duration-300 text-white placeholder-gray-400">
 
                 <!-- Phone -->

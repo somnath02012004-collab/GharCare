@@ -39,6 +39,37 @@ def login(request):
 
 
 def signup(request):
+
+    if request.method == "POST":
+        
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        password = request.POST.get('password')
+        confirm_password = request.POST.get('confirm_password')
+
+        if password != confirm_password:
+
+            return render(request, 'signup.html', {
+                'error': 'Passwords do not match',
+                'hide_navbar': True
+            })
+
+        username = email
+
+        user = User.objects.create_user(
+            username=username,
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            password=password,
+        )
+
+        auth_login(request, user)
+
+        return redirect('service')
+
     return render(request, 'signup.html', {
         'hide_navbar': True
     })
