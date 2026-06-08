@@ -1,8 +1,9 @@
-
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.contrib.auth.hashers import make_password
+from django.contrib.auth import authenticate, login as auth_login, logout
+from .models import ServiceProvider
+from django.contrib.auth.decorators import login_required
 
 def signup(request):
 
@@ -15,14 +16,24 @@ def signup(request):
         password = request.POST.get('password')
         confirm_password = request.POST.get('confirm_password')
 
+        # empty field check
+        if not first_name or not last_name or not email or not username or not password or not confirm_password:
+            messages.error(request, "Please fill all the fields!")
+            return redirect('signup')
+
         # check password
         if password != confirm_password:
             messages.error(request, "Passwords do not match!")
             return redirect('signup')
 
-        # check duplicate email
+       # check duplicate email
         if User.objects.filter(email=email).exists():
             messages.error(request, "Email already exists!")
+            return redirect('signup')
+
+        # check duplicate username
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "Username already exists!")
             return redirect('signup')
 
         # create user
@@ -37,10 +48,9 @@ def signup(request):
         user.save()
 
         messages.success(request, "Account created successfully!")
-        return redirect('login')
+        return redirect('signup_success')
 
     return render(request, 'signup.html')
-
 
 def login(request):
 
@@ -57,7 +67,7 @@ def login(request):
 
         if user is not None:
             auth_login(request, user)
-            return redirect('services')  # better than 'service'
+            return redirect('dashboard')
 
         else:
             messages.error(request, "Invalid credentials")
@@ -86,3 +96,20 @@ def register(request):
         return redirect('register')
 
     return render(request, 'provider-register.html')
+
+def signup_success(request):
+    return render(request, 'signup_successfull.html')
+
+def logout_view(request):
+    logout(request)
+    messages.success(request, "Logged out successfully!")
+    return redirect('login')
+
+@login_required
+def dashboard(request):
+
+    context = {
+        'user': request.user
+    }
+
+    return render(request, 'dashboard.html', context)

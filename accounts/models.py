@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 class ServiceProvider(models.Model):
     full_name = models.CharField(max_length=100)
@@ -25,15 +27,33 @@ class ServiceProvider(models.Model):
     def __str__(self):
         return self.full_name
 
-# signup form model
 class UserProfile(models.Model):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    email = models.EmailField(unique=True)
-    phone = models.CharField(max_length=15, unique=True)
-    password = models.CharField(max_length=255)
 
-    created_at = models.DateTimeField(auto_now_add=True)
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE
+    )
+
+    phone = models.CharField(
+        max_length=15,
+        blank=True,
+        null=True
+    )
+
+    profile_picture = models.ImageField(
+        upload_to='users/profile/',
+        blank=True,
+        null=True
+    )
+
+    address = models.TextField(
+        blank=True,
+        null=True
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True
+    )
 
     def __str__(self):
-        return self.email
+        return self.user.username
