@@ -27,6 +27,53 @@
      <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
 
+<body>
+
+    {% if messages %}
+    <div id="message-container"
+        class="fixed bottom-6 right-6 z-[9999] space-y-3">
+
+        {% for message in messages %}
+        <div class="message-alert flex items-center gap-4 px-5 py-4 rounded-2xl
+            backdrop-blur-xl border shadow-2xl min-w-[320px] max-w-sm text-white
+
+            {% if message.tags == 'success' %}
+                bg-green-500/20 border-green-400/40
+            {% elif message.tags == 'error' %}
+                bg-red-500/20 border-red-400/40
+            {% else %}
+                bg-cyan-500/20 border-cyan-400/40
+            {% endif %}
+        ">
+
+            <!-- Icon -->
+            <div class="text-2xl">
+                {% if message.tags == 'success' %}
+                    ✅
+                {% elif message.tags == 'error' %}
+                    ❌
+                {% else %}
+                    ℹ️
+                {% endif %}
+            </div>
+
+            <!-- Text -->
+            <div class="flex-1">
+                <p class="font-medium">{{ message }}</p>
+            </div>
+
+            <!-- Close -->
+            <button onclick="this.parentElement.remove()"
+                    class="text-white/70 hover:text-white text-xl">
+                ×
+            </button>
+
+        </div>
+        {% endfor %}
+
+    </div>
+    {% endif %}
+
     <!-- Background Glow -->
 
     <div class="absolute top-0 left-0 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl"></div>
@@ -145,8 +192,8 @@
                 </div>
 
                 <!-- Form -->
-                <form class="space-y-5">
-
+                <form method="POST" action="{% url 'login' %}" class="space-y-5">
+                     {% csrf_token %}
                     <!-- Email -->
                     <div>
 
@@ -154,7 +201,7 @@
                             Email Address
                         </label>
 
-                        <input type="email"
+                        <input type="text"
                             placeholder="Enter your email or Username"
                             name = "name"
                             class="w-full px-5 py-4 rounded-2xl input-style transition duration-300">
@@ -197,15 +244,13 @@
                     </div>
 
                     <!-- Login Button -->
-
-                    <form method="POST" action="{% url 'login' %}">
-                    {% csrf_token %}
+                
                     <button
                         type="submit"
                         class="shine-btn w-full py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold text-lg hover:scale-[1.02] transition duration-300 shadow-2xl shadow-cyan-500/20">
-
-                         Login Account
-
+            
+                        Login Account
+                        
                     </button>
 
                     <!-- Divider -->
@@ -220,15 +265,6 @@
                         <div class="flex-1 h-px bg-white/10"></div>
 
                     </div>
-
-                    <!-- Google Button -->
-                    <button
-                        type="button"
-                        class="w-full py-4 rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-400/30 transition duration-300 font-medium">
-
-                        🌐 Continue With Google
-
-                    </button>
 
                     <!-- Signup -->
                     <p class="text-center text-gray-400 text-sm pt-2">
@@ -251,5 +287,33 @@
         </div>
 
     </section>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+        const alerts = document.querySelectorAll(".message-alert");
+
+        alerts.forEach((alert) => {
+
+            setTimeout(() => {
+
+                alert.style.transition = "all 0.5s ease";
+                alert.style.opacity = "0";
+                alert.style.transform = "translateX(100px)";
+
+                setTimeout(() => {
+                    alert.remove();
+                }, 500);
+
+            }, 5000);
+
+        });
+
+    });
+</script>
+
+</body>
+
+</html>
 
 {% endblock content %}

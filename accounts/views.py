@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login, logout
 from .models import ServiceProvider
 from django.contrib.auth.decorators import login_required
-
+from bookings.models import Booking
 def signup(request):
 
     if request.method == "POST":
@@ -63,14 +63,30 @@ def login(request):
 
         username = user_obj.username if user_obj else name
 
-        user = authenticate(request, username=username, password=password)
+        user = authenticate(
+            request,
+            username=username,
+            password=password
+        )
 
         if user is not None:
+
             auth_login(request, user)
+
+            messages.success(
+                request,
+                f"Welcome back, {user.first_name}!"
+            )
+
             return redirect('dashboard')
 
         else:
-            messages.error(request, "Invalid credentials")
+
+            messages.error(
+                request,
+                "Invalid Email/Username or Password!"
+            )
+
             return redirect('login')
 
     return render(request, 'login.html')
@@ -105,11 +121,33 @@ def logout_view(request):
     messages.success(request, "Logged out successfully!")
     return redirect('login')
 
-@login_required
+
+@login_required(login_url='login')
 def dashboard(request):
 
+    total_bookings = Booking.objects.filter(
+        user=request.user
+    ).count()
+
+    pending_bookings = Booking.objects.filter(
+        user=request.user,
+        status='Pending'
+    ).count()
+
+    completed_bookings = Booking.objects.filter(
+        user=request.user,
+        status='Completed'
+    ).count()
+
+    recent_bookings = Booking.objects.filter(
+        user=request.user
+    ).order_by('-created_at')[:5]
+
     context = {
-        'user': request.user
+        'total_bookings': total_bookings,
+        'pending_bookings': pending_bookings,
+        'completed_bookings': completed_bookings,
+        'recent_bookings': recent_bookings,
     }
 
     return render(request, 'dashboard.html', context)
