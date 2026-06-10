@@ -5,427 +5,232 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About GharCare</title>
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static "css/about.css" %}">
-
 </head>
+
 <body>
 
     <!-- Background Glow -->
     <div class="absolute top-0 left-0 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl"></div>
-
     <div class="absolute bottom-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
 
-
     <!-- ================= NAVBAR ================= -->
-
     <nav class="sticky top-0 z-50 glass border-b border-white/10 px-6 md:px-12 py-4">
-
         <div class="max-w-7xl mx-auto flex items-center justify-between flex-wrap gap-4">
 
             <!-- Logo -->
             <div class="flex items-center gap-3">
-
-                <img src="{% static "assets/GharCare.png" %}"
-                    class="w-14 h-14 rounded-full object-cover logo-about-animation">
-
+                <img src="{% static "assets/GharCare.png" %}" 
+                     class="w-14 h-14 rounded-full object-cover logo-about-animation">
                 <div>
-
-                    <h1 class="text-2xl font-bold">
-                        GharCare
-                    </h1>
-
-                    <!-- NEW SLOGAN -->
-                    <p class="text-sm text-yellow-300 font-medium tracking-wide">
-                        Your Home, Our Care
-                    </p>
-
-                    <p class="text-[10px] tracking-[4px] text-gray-400 uppercase mt-1">
-                        Premium Home Services
-                    </p>
-
+                    <h1 class="text-2xl font-bold">GharCare</h1>
+                    <p class="text-sm text-yellow-300 font-medium tracking-wide">Your Home, Our Care</p>
+                    <p class="text-[10px] tracking-[4px] text-gray-400 uppercase mt-1">Premium Home Services</p>
                 </div>
-
             </div>
 
             <!-- Buttons -->
             <div class="flex items-center gap-3 flex-wrap">
 
-                <button
-                    class="shine-btn flex items-center gap-2 px-5 py-2 rounded-xl bg-white/5 border border-white/10 hover:border-yellow-400/40 transition duration-300">
-                    <a href="{% url 'login' %}">
-                        🔐 Login
-                    </a>
-                </button>
+                {% if user.is_authenticated %}
+                    <!-- ================= LOGGED IN ================= -->
+                    <button class="shine-btn flex items-center gap-2 px-5 py-2 rounded-xl bg-gradient-to-r from-yellow-500 to-amber-600 font-semibold hover:border-yellow-400/40 transition duration-300">
+                        <a href="{% url 'services' %}">🔍 Explore Services</a>
+                    </button>
 
-                <button
-                    class="shine-btn flex items-center gap-2 px-5 py-2 rounded-xl bg-gradient-to-r from-yellow-500 to-amber-600 font-semibold hover:scale-105 transition duration-300">
-                    <a href="{% url 'signup' %}">
-                        📝 Sign Up
-                    </a>
-                </button>
+                    <button class="shine-btn flex items-center gap-2 px-5 py-2 rounded-xl bg-gradient-to-r from-red-500 to-rose-600 font-semibold hover:border-yellow-400/40 transition duration-300">
+                        <a href="{% url 'dashboard' %}">📊 Dashboard</a>
+                    </button>
 
-                <button
-                    class="shine-btn flex items-center gap-2 px-5 py-2 rounded-xl bg-white/5 border border-white/10 hover:border-yellow-400/40 transition duration-300">
+                    <button class="shine-btn flex items-center gap-2 px-5 py-2 rounded-xl bg-gradient-to-r from-yellow-500 to-amber-600 font-semibold hover:border-yellow-400/40 transition duration-300">
+                        <a href="{% url 'provider' %}">🧑🏻‍🔧 Give Service</a>
+                    </button>
 
-                    ⚙ Settings
+                    <button class="shine-btn flex items-center gap-2 px-5 py-2 rounded-xl bg-gradient-to-r from-red-500 to-rose-600 font-semibold hover:scale-105 transition duration-300">
+                        <a href="{% url 'logout' %}">🚪 Logout</a>
+                    </button>
 
-                </button>
+                {% else %}
+                    <!-- ================= NOT LOGGED IN ================= -->
+                    <button class="shine-btn flex items-center gap-2 px-5 py-2 rounded-xl bg-white/5 border border-white/10 hover:border-yellow-400/40 transition duration-300">
+                        <a href="{% url 'login' %}">🔐 Login</a>
+                    </button>
 
-                <button
-                    class="shine-btn flex items-center gap-2 px-5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 font-semibold hover:scale-105 transition duration-300">
+                    <button class="shine-btn flex items-center gap-2 px-5 py-2 rounded-xl bg-gradient-to-r from-yellow-500 to-amber-600 font-semibold hover:scale-105 transition duration-300">
+                        <a href="{% url 'signup' %}">📝 Sign Up</a>
+                    </button>
 
-                    🛡 Admin
+                    <button class="shine-btn flex items-center gap-2 px-5 py-2 rounded-xl bg-white/5 border border-white/10 hover:border-yellow-400/40 transition duration-300">
+                        <a href="{% url 'provider' %}">🧑🏻‍🔧 Give Service</a>
+                    </button>
 
-                </button>
+                    <button class="shine-btn flex items-center gap-2 px-5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 font-semibold hover:scale-105 transition duration-300">
+                        <a href="#">🛡 Admin</a>
+                    </button>
+                {% endif %}
 
             </div>
 
         </div>
-
     </nav>
 
-
     <!-- ================= HERO SECTION ================= -->
-
     <section class="px-6 md:px-12 py-16">
-
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
 
             <!-- Left -->
             <div class="space-y-5 fade-up">
-
-                <div
-                    class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/5 border border-yellow-400/20 text-yellow-300 uppercase tracking-widest text-sm">
-
+                <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/5 border border-yellow-400/20 text-yellow-300 uppercase tracking-widest text-sm">
                     ✨ About GharCare
-
                 </div>
 
                 <h1 class="text-5xl md:text-6xl font-bold leading-tight">
-
                     Trusted Home Services <br>
-
-                    <span
-                        class="bg-gradient-to-r from-yellow-300 to-amber-500 bg-clip-text text-transparent">
-
+                    <span class="bg-gradient-to-r from-yellow-300 to-amber-500 bg-clip-text text-transparent">
                         With Premium Care
-
                     </span>
-
                 </h1>
 
                 <p class="text-lg text-gray-400 leading-relaxed max-w-2xl">
-
-                    GharCare is a premium home service platform
-                    providing trusted and verified professionals
-                    for AC repair, plumbing, cleaning, spa care,
-                    beauty care and more.
-
+                    GharCare is a premium home service platform providing trusted and verified professionals for AC repair, plumbing, cleaning, spa care, beauty care and more.
                 </p>
-
             </div>
 
             <!-- Right -->
             <div class="flex justify-center fade-up">
-
-                <div
-                    class="glass rounded-full p-8 border border-yellow-400/10 shadow-2xl shadow-yellow-500/10">
-
-                    <img src="{% static "assets/GharCare.png" %}"
-                        class="w-[280px] rounded-full object-contain logo-about-animation">
-
+                <div class="glass rounded-full p-8 border border-yellow-400/10 shadow-2xl shadow-yellow-500/10">
+                    <img src="{% static "assets/GharCare.png" %}" 
+                         class="w-[280px] rounded-full object-contain logo-about-animation">
                 </div>
-
             </div>
-
         </div>
-
     </section>
-
 
     <!-- ================= SERVICES ================= -->
-
     <section class="px-6 md:px-12 py-12">
-
         <div class="max-w-7xl mx-auto">
-
             <div class="text-center mb-10">
-
-                <h2 class="text-4xl font-bold mb-3">
-                    Our Premium Services
-                </h2>
-
-                <p class="text-gray-400 text-lg max-w-2xl mx-auto">
-
-                    Modern home services with professional support.
-
-                </p>
-
+                <h2 class="text-4xl font-bold mb-3">Our Premium Services</h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">Modern home services with professional support.</p>
             </div>
 
-            <!-- Cards -->
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
                 <div class="glass rounded-3xl p-7 card-hover">
-
                     <div class="text-5xl mb-4">❄</div>
-
-                    <h3 class="text-2xl font-semibold mb-2">
-                        AC Repair
-                    </h3>
-
-                    <p class="text-gray-400 leading-relaxed">
-                        Fast installation and maintenance support.
-                    </p>
-
+                    <h3 class="text-2xl font-semibold mb-2">AC Repair</h3>
+                    <p class="text-gray-400 leading-relaxed">Fast installation and maintenance support.</p>
                 </div>
 
                 <div class="glass rounded-3xl p-7 card-hover">
-
                     <div class="text-5xl mb-4">🚿</div>
-
-                    <h3 class="text-2xl font-semibold mb-2">
-                        Plumbing
-                    </h3>
-
-                    <p class="text-gray-400 leading-relaxed">
-                        Professional plumbing solutions for homes.
-                    </p>
-
+                    <h3 class="text-2xl font-semibold mb-2">Plumbing</h3>
+                    <p class="text-gray-400 leading-relaxed">Professional plumbing solutions for homes.</p>
                 </div>
 
                 <div class="glass rounded-3xl p-7 card-hover">
-
                     <div class="text-5xl mb-4">🧹</div>
-
-                    <h3 class="text-2xl font-semibold mb-2">
-                        Cleaning
-                    </h3>
-
-                    <p class="text-gray-400 leading-relaxed">
-                        Deep cleaning for healthy environments.
-                    </p>
-
+                    <h3 class="text-2xl font-semibold mb-2">Cleaning</h3>
+                    <p class="text-gray-400 leading-relaxed">Deep cleaning for healthy environments.</p>
                 </div>
 
                 <div class="glass rounded-3xl p-7 card-hover">
-
                     <div class="text-5xl mb-4">💇</div>
-
-                    <h3 class="text-2xl font-semibold mb-2">
-                        Hair Care
-                    </h3>
-
-                    <p class="text-gray-400 leading-relaxed">
-                        Premium styling and treatment services.
-                    </p>
-
+                    <h3 class="text-2xl font-semibold mb-2">Hair Care</h3>
+                    <p class="text-gray-400 leading-relaxed">Premium styling and treatment services.</p>
                 </div>
 
                 <div class="glass rounded-3xl p-7 card-hover">
-
                     <div class="text-5xl mb-4">💄</div>
-
-                    <h3 class="text-2xl font-semibold mb-2">
-                        Beauty Care
-                    </h3>
-
-                    <p class="text-gray-400 leading-relaxed">
-                        Skincare and beauty services at home.
-                    </p>
-
+                    <h3 class="text-2xl font-semibold mb-2">Beauty Care</h3>
+                    <p class="text-gray-400 leading-relaxed">Skincare and beauty services at home.</p>
                 </div>
 
                 <div class="glass rounded-3xl p-7 card-hover">
-
                     <div class="text-5xl mb-4">🌿</div>
-
-                    <h3 class="text-2xl font-semibold mb-2">
-                        Spa Care
-                    </h3>
-
-                    <p class="text-gray-400 leading-relaxed">
-                        Relaxing spa therapies for comfort.
-                    </p>
-
+                    <h3 class="text-2xl font-semibold mb-2">Spa Care</h3>
+                    <p class="text-gray-400 leading-relaxed">Relaxing spa therapies for comfort.</p>
                 </div>
-
             </div>
-
         </div>
-
     </section>
 
-
     <!-- ================= WHY CHOOSE US ================= -->
-
     <section class="px-6 md:px-12 py-12">
-
         <div class="max-w-7xl mx-auto">
-
             <div class="text-center mb-10">
-
-                <h2 class="text-4xl font-bold">
-                    Why Customers Love GharCare
-                </h2>
-
+                <h2 class="text-4xl font-bold">Why Customers Love GharCare</h2>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-
                 <div class="glass rounded-3xl p-7 text-center card-hover">
-
-                    <div class="text-5xl mb-4">
-                        🛡
-                    </div>
-
-                    <h3 class="text-xl font-semibold mb-2">
-                        Verified Experts
-                    </h3>
-
-                    <p class="text-gray-400">
-                        Skilled professionals for every service.
-                    </p>
-
+                    <div class="text-5xl mb-4">🛡</div>
+                    <h3 class="text-xl font-semibold mb-2">Verified Experts</h3>
+                    <p class="text-gray-400">Skilled professionals for every service.</p>
                 </div>
 
                 <div class="glass rounded-3xl p-7 text-center card-hover">
-
-                    <div class="text-5xl mb-4">
-                        ⚡
-                    </div>
-
-                    <h3 class="text-xl font-semibold mb-2">
-                        Fast Service
-                    </h3>
-
-                    <p class="text-gray-400">
-                        Quick response and instant support.
-                    </p>
-
+                    <div class="text-5xl mb-4">⚡</div>
+                    <h3 class="text-xl font-semibold mb-2">Fast Service</h3>
+                    <p class="text-gray-400">Quick response and instant support.</p>
                 </div>
 
                 <div class="glass rounded-3xl p-7 text-center card-hover">
-
-                    <div class="text-5xl mb-4">
-                        💬
-                    </div>
-
-                    <h3 class="text-xl font-semibold mb-2">
-                        Customer Friendly
-                    </h3>
-
-                    <p class="text-gray-400">
-                        Easy booking and helpful support.
-                    </p>
-
+                    <div class="text-5xl mb-4">💬</div>
+                    <h3 class="text-xl font-semibold mb-2">Customer Friendly</h3>
+                    <p class="text-gray-400">Easy booking and helpful support.</p>
                 </div>
 
                 <div class="glass rounded-3xl p-7 text-center card-hover">
-
-                    <div class="text-5xl mb-4">
-                        ⭐
-                    </div>
-
-                    <h3 class="text-xl font-semibold mb-2">
-                        Premium Quality
-                    </h3>
-
-                    <p class="text-gray-400">
-                        Trusted premium service experience.
-                    </p>
-
+                    <div class="text-5xl mb-4">⭐</div>
+                    <h3 class="text-xl font-semibold mb-2">Premium Quality</h3>
+                    <p class="text-gray-400">Trusted premium service experience.</p>
                 </div>
-
             </div>
-
         </div>
-
     </section>
 
-
     <!-- ================= FOOTER ================= -->
-
     <footer class="border-t border-white/10 mt-12 glass">
-
         <div class="max-w-7xl mx-auto px-6 md:px-12 py-8">
-
             <div class="grid md:grid-cols-3 gap-8">
-
                 <div>
-
-                    <h2 class="text-3xl font-bold mb-3">
-                        GharCare
-                    </h2>
-
-                    <p class="text-gray-400 leading-relaxed">
-
-                        Premium home services platform
-                        with trusted professionals.
-
-                    </p>
-
+                    <h2 class="text-3xl font-bold mb-3">GharCare</h2>
+                    <p class="text-gray-400 leading-relaxed">Premium home services platform with trusted professionals.</p>
                 </div>
 
                 <div>
-
-                    <h3 class="text-xl font-semibold mb-3">
-                        Quick Links
-                    </h3>
-
+                    <h3 class="text-xl font-semibold mb-3">Quick Links</h3>
                     <ul class="space-y-2 text-gray-400">
-
                         <li>Home</li>
                         <li>Services</li>
                         <li>About</li>
                         <li>Contact</li>
-
                     </ul>
-
                 </div>
 
                 <div>
-
-                    <h3 class="text-xl font-semibold mb-3">
-                        Contact
-                    </h3>
-
+                    <h3 class="text-xl font-semibold mb-3">Contact</h3>
                     <ul class="space-y-2 text-gray-400">
-
                         <li>📧 support@gharcare.com</li>
                         <li>📞 +91 9876543210</li>
                         <li>📍 India</li>
-
                     </ul>
-
                 </div>
-
             </div>
 
             <div class="border-t border-white/10 mt-8 pt-5 text-center text-gray-500">
-
                 © 2026 GharCare. All rights reserved.
-
             </div>
-
         </div>
-
     </footer>
 
 </body>
-
 </html>
-
 {% endblock content %}
