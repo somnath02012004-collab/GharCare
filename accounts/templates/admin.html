@@ -1,0 +1,101 @@
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - GharCare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+
+<body class="bg-black text-white min-h-screen">
+
+    <!-- Top Navbar -->
+    <nav class="bg-zinc-900 border-b border-white/10 py-4 px-6 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <img src="{% static 'assets/GharCare.png' %}" class="w-10 h-10 rounded-full">
+            <h1 class="text-2xl font-bold">GharCare <span class="text-cyan-400">Admin</span></h1>
+        </div>
+        <div>
+            <a href="{% url 'home' %}" class="px-5 py-2 bg-white/10 hover:bg-white/20 rounded-xl transition">← Back to Home</a>
+            <a href="{% url 'logout' %}" class="ml-3 px-5 py-2 bg-red-600 hover:bg-red-700 rounded-xl transition">Logout</a>
+        </div>
+    </nav>
+
+    <div class="flex">
+
+        <!-- Sidebar -->
+        <div class="w-64 bg-zinc-900 h-screen p-6 border-r border-white/10">
+            <h3 class="text-gray-400 uppercase text-xs tracking-widest mb-4">Management</h3>
+            <ul class="space-y-2">
+                <li><a href="#" class="block py-3 px-4 bg-cyan-500/10 text-cyan-400 rounded-2xl">Bookings</a></li>
+                <li><a href="#" class="block py-3 px-4 hover:bg-white/5 rounded-2xl transition">Service Providers</a></li>
+                <li><a href="#" class="block py-3 px-4 hover:bg-white/5 rounded-2xl transition">Users</a></li>
+                <li><a href="#" class="block py-3 px-4 hover:bg-white/5 rounded-2xl transition">Services</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-8">
+            <h2 class="text-3xl font-bold mb-6">All Bookings</h2>
+
+            <div class="glass rounded-3xl overflow-hidden">
+                <table class="w-full">
+                    <thead class="bg-white/5">
+                        <tr>
+                            <th class="px-6 py-5 text-left">Customer</th>
+                            <th class="px-6 py-5 text-left">Phone</th>
+                            <th class="px-6 py-5 text-left">Service</th>
+                            <th class="px-6 py-5 text-left">Date</th>
+                            <th class="px-6 py-5 text-left">Status</th>
+                            <th class="px-6 py-5 text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for booking in bookings %}
+                        <tr class="border-b border-white/10 hover:bg-white/5 transition">
+                            <td class="px-6 py-5">
+                                <div>
+                                    <h4 class="font-semibold">{{ booking.full_name }}</h4>
+                                    <p class="text-sm text-gray-400">{{ booking.email }}</p>
+                                </div>
+                            </td>
+                            <td class="px-6 py-5">{{ booking.phone }}</td>
+                            <td class="px-6 py-5">{{ booking.service }}</td>
+                            <td class="px-6 py-5">{{ booking.preferred_date }}</td>
+                            <td class="px-6 py-5">
+                                {% if booking.status == 'Pending' %}
+                                    <span class="px-4 py-1.5 rounded-full text-sm bg-yellow-500/20 text-yellow-400">Pending</span>
+                                {% elif booking.status == 'Accepted' %}
+                                    <span class="px-4 py-1.5 rounded-full text-sm bg-blue-500/20 text-blue-400">Accepted</span>
+                                {% elif booking.status == 'Completed' %}
+                                    <span class="px-4 py-1.5 rounded-full text-sm bg-green-500/20 text-green-400">Completed</span>
+                                {% else %}
+                                    <span class="px-4 py-1.5 rounded-full text-sm bg-red-500/20 text-red-400">Rejected</span>
+                                {% endif %}
+                            </td>
+                            <td class="px-6 py-5">
+                                <div class="flex gap-2 justify-center">
+                                    <a href="{% url 'update_booking_status' booking.id 'Accepted' %}" 
+                                       class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-xl text-sm">Accept</a>
+                                    <a href="{% url 'update_booking_status' booking.id 'Completed' %}" 
+                                       class="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-xl text-sm">Complete</a>
+                                    <a href="{% url 'update_booking_status' booking.id 'Rejected' %}" 
+                                       class="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-xl text-sm">Reject</a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+{% endblock content %}

@@ -30,6 +30,47 @@
     <div class="absolute top-0 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
     <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
 
+    {% if messages %}
+    <div id="message-container"
+        class="fixed bottom-6 right-6 z-[9999] space-y-3">
+
+        {% for message in messages %}
+        <div class="message-alert flex items-center gap-4 px-5 py-4 rounded-2xl
+            backdrop-blur-xl border shadow-2xl min-w-[320px] max-w-sm text-white
+
+            {% if message.tags == 'success' %}
+                bg-green-500/20 border-green-400/40
+            {% elif message.tags == 'error' %}
+                bg-red-500/20 border-red-400/40
+            {% else %}
+                bg-cyan-500/20 border-cyan-400/40
+            {% endif %}
+        ">
+
+            <div class="text-2xl">
+                {% if message.tags == 'success' %}
+                    ✅
+                {% elif message.tags == 'error' %}
+                    ❌
+                {% else %}
+                    ℹ️
+                {% endif %}
+            </div>
+
+            <div class="flex-1">
+                <p class="font-medium">{{ message }}</p>
+            </div>
+
+            <button onclick="this.parentElement.remove()"
+                    class="text-white/70 hover:text-white text-xl">
+                ×
+            </button>
+
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
     <div class="relative w-full max-w-6xl grid lg:grid-cols-2 gap-10 items-center">
 
         <!-- ================= LEFT SIDE - BIG CONTENT ================= -->

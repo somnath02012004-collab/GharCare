@@ -6,24 +6,27 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
-
     path('admin/', admin.site.urls),
 
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
-    path('provider/', views.provider, name='provider'),
 
+    
     path('', include('accounts.urls')),
+
+    
     path('', include('bookings.urls')),
+
+    
     path('services/', include('service.urls')),
 
-    path('accounts/', include('allauth.urls')),
+   
+    path('provider/', views.provider, name='provider'),        # ← এটা থাকতে হবে
+    path('partners/', include('partners.urls')),
 
+    
+    path('accounts/', include('allauth.urls')),
 ]
 
-# Media Files
 if settings.DEBUG:
-    urlpatterns += static(
-        settings.MEDIA_URL,
-        document_root=settings.MEDIA_ROOT
-    )
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
