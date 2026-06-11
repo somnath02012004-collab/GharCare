@@ -5,6 +5,8 @@ from django.contrib.auth import authenticate, login as auth_login, logout
 from .models import ServiceProvider
 from django.contrib.auth.decorators import login_required
 from bookings.models import Booking
+
+
 def signup(request):
 
     if request.method == "POST":
@@ -98,15 +100,55 @@ def register(request):
 
     if request.method == "POST":
 
+        full_name = request.POST.get('full_name')
+        phone = request.POST.get('phone')
+        email = request.POST.get('email')
+        service = request.POST.get('service')
+        experience = request.POST.get('experience')
+        address = request.POST.get('address')
+
+        profile_picture = request.FILES.get('profile_picture')
+        id_proof = request.FILES.get('id_proof')
+
+        # Empty field validation
+        if not all([
+            full_name,
+            phone,
+            email,
+            service,
+            experience,
+            address,
+            profile_picture,
+            id_proof
+        ]):
+            messages.error(request, "Please fill all required fields!")
+            return redirect('register')
+
+        # Duplicate email check
+        if ServiceProvider.objects.filter(email=email).exists():
+            messages.error(request, "Email already registered!")
+            return redirect('register')
+
+        # Duplicate phone check
+        if ServiceProvider.objects.filter(phone=phone).exists():
+            messages.error(request, "Phone number already registered!")
+            return redirect('register')
+
+        # Save to database
         ServiceProvider.objects.create(
-            full_name=request.POST.get('full_name'),
-            phone=request.POST.get('phone'),
-            email=request.POST.get('email'),
-            service=request.POST.get('service'),
-            experience=request.POST.get('experience'),
-            address=request.POST.get('address'),
-            profile_picture=request.FILES.get('profile_picture'),
-            id_proof=request.FILES.get('id_proof')
+            full_name=full_name,
+            phone=phone,
+            email=email,
+            service=service,
+            experience=experience,
+            address=address,
+            profile_picture=profile_picture,
+            id_proof=id_proof
+        )
+
+        messages.success(
+            request,
+            "Registration submitted successfully!"
         )
 
         return redirect('register')
@@ -125,29 +167,37 @@ def logout_view(request):
 @login_required(login_url='login')
 def dashboard(request):
 
-    total_bookings = Booking.objects.filter(
+    bookings = Booking.objects.filter(
         user=request.user
-    ).count()
+    ).order_by('-created_at')
 
-    pending_bookings = Booking.objects.filter(
-        user=request.user,
+    total_bookings = bookings.count()
+
+    pending_bookings = bookings.filter(
         status='Pending'
     ).count()
 
-    completed_bookings = Booking.objects.filter(
-        user=request.user,
+    completed_bookings = bookings.filter(
         status='Completed'
     ).count()
 
-    recent_bookings = Booking.objects.filter(
-        user=request.user
-    ).order_by('-created_at')[:5]
+    cancelled_bookings = bookings.filter(
+        status='Cancelled'
+    ).count()
 
     context = {
+        'bookings': bookings,
         'total_bookings': total_bookings,
         'pending_bookings': pending_bookings,
         'completed_bookings': completed_bookings,
-        'recent_bookings': recent_bookings,
+        'cancelled_bookings': cancelled_bookings,
     }
 
-    return render(request, 'dashboard.html', context)
+    return render(
+        request,
+        'dashboard.html',
+        context
+    )
+
+def admins(request):
+    return render(request, 'admin.html')
