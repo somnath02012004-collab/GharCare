@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'bookings',
     'partners',
     'service',
+    'admins',
     'django.contrib.sites',
 
     'allauth',

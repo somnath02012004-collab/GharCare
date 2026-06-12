@@ -198,6 +198,3 @@ def dashboard(request):
         'dashboard.html',
         context
     )
-
-def admins(request):
-    return render(request, 'admin.html')
