@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+    <!-- Main Content -->
+    <div class="flex-1 p-8">
+
+        <div class="grid grid-cols-4 gap-5 mb-8">
+
+            <div class="bg-cyan-500/10 p-6 rounded-3xl">
+                <h3 class="text-gray-400 text-sm">Users</h3>
+                <h2 class="text-4xl font-bold mt-2">
+                    {{ total_users }}
+                </h2>
+            </div>
+
+            <div class="bg-green-500/10 p-6 rounded-3xl">
+                <h3 class="text-gray-400 text-sm">Providers</h3>
+                <h2 class="text-4xl font-bold mt-2">
+                    {{ total_providers }}
+                </h2>
+            </div>
+
+            <div class="bg-yellow-500/10 p-6 rounded-3xl">
+                <h3 class="text-gray-400 text-sm">Pending</h3>
+                <h2 class="text-4xl font-bold mt-2">
+                    {{ pending_providers }}
+                </h2>
+            </div>
+
+            <div class="bg-purple-500/10 p-6 rounded-3xl">
+                <h3 class="text-gray-400 text-sm">Bookings</h3>
+                <h2 class="text-4xl font-bold mt-2">
+                    {{ total_bookings }}
+                </h2>
+            </div>
+
+        </div>
+
+        <h2 class="text-3xl font-bold mb-6">All Bookings</h2>
+
+        <div class="glass rounded-3xl overflow-hidden">
+            <table class="w-full">
+                <thead class="bg-white/5">
+                    <tr>
+                        <th class="px-6 py-5 text-left">Customer</th>
+                        <th class="px-6 py-5 text-left">Phone</th>
+                        <th class="px-6 py-5 text-left">Service</th>
+                        <th class="px-6 py-5 text-left">Date</th>
+                        <th class="px-6 py-5 text-left">Status</th>
+                        <th class="px-6 py-5 text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for booking in bookings %}
+                    <tr class="border-b border-white/10 hover:bg-white/5 transition">
+                        <td class="px-6 py-5">
+                            <div>
+                                <h4 class="font-semibold">{{ booking.user.get_full_name }}</h4>
+
+                                <p class="text-sm text-gray-400">{{ booking.user.email }}</p>
+                            </div>
+                        </td>
+                        <td class="px-6 py-5">{{ booking.phone }}</td>
+                        <td class="px-6 py-5">{{ booking.service }}</td>
+                        <td class="px-6 py-5">{{ booking.booking_date }}</td>
+                        <td class="px-6 py-5">
+                            {% if booking.status == 'Pending' %}
+                                <span class="px-4 py-1.5 rounded-full text-sm bg-yellow-500/20 text-yellow-400">Pending</span>
+                            {% elif booking.status == 'Accepted' %}
+                                <span class="px-4 py-1.5 rounded-full text-sm bg-blue-500/20 text-blue-400">Accepted</span>
+                            {% elif booking.status == 'Cancelled' %}
+                                <span class="px-4 py-1.5 rounded-full text-sm bg-red-500/20 text-red-400">Cancelled</span>
+                            {% elif booking.status == 'Completed' %}
+                                <span class="px-4 py-1.5 rounded-full text-sm bg-green-500/20 text-green-400">Completed</span>
+                            {% endif %}
+                        </td>
+                        <td class="px-6 py-5">
+                            <div class="flex gap-2 justify-center">
+                                <a href="{% url 'update_booking_status' booking.id 'Accepted' %}" 
+                                   class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-xl text-sm">Accept</a>
+                                <a href="{% url 'update_booking_status' booking.id 'Completed' %}" 
+                                   class="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-xl text-sm">Complete</a>
+                                <a href="{% url 'update_booking_status' booking.id 'Cancelled' %}" 
+                                   class="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-xl text-sm">Reject</a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock content %}
