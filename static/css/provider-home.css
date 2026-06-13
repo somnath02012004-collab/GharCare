@@ -1,0 +1,199 @@
+*{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+
+            font-family:'Poppins',sans-serif;
+
+            background:
+            radial-gradient(circle at top left,#4c1d95 0%,transparent 30%),
+            radial-gradient(circle at bottom right,#831843 0%,transparent 30%),
+            linear-gradient(135deg,#050816,#12051f,#000000);
+
+            color:white;
+
+            overflow-x:hidden;
+            min-height:100vh;
+
+            position:relative;
+        }
+
+        /* ================= GLOW CIRCLES ================= */
+
+        .circle{
+
+            position:absolute;
+            border-radius:9999px;
+            filter:blur(90px);
+            opacity:.20;
+            z-index:0;
+        }
+
+        .circle1{
+
+            width:320px;
+            height:320px;
+
+            background:#c026d3;
+
+            top:-120px;
+            left:-80px;
+
+            animation:move1 10s ease-in-out infinite;
+        }
+
+        .circle2{
+
+            width:280px;
+            height:280px;
+
+            background:#9333ea;
+
+            bottom:-100px;
+            right:-80px;
+
+            animation:move2 12s ease-in-out infinite;
+        }
+
+        @keyframes move1{
+
+            0%{
+                transform:translateY(0px);
+            }
+
+            50%{
+                transform:translateY(40px);
+            }
+
+            100%{
+                transform:translateY(0px);
+            }
+
+        }
+
+        @keyframes move2{
+
+            0%{
+                transform:translateY(0px);
+            }
+
+            50%{
+                transform:translateY(-35px);
+            }
+
+            100%{
+                transform:translateY(0px);
+            }
+
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar{
+
+            background:rgba(255,255,255,0.05);
+
+            border:1px solid rgba(255,255,255,0.08);
+
+            backdrop-filter:blur(12px);
+
+            box-shadow:
+            0 0 20px rgba(168,85,247,.08);
+        }
+
+        /* ================= GLASS ================= */
+
+        .glass{
+
+            background:rgba(255,255,255,0.05);
+
+            border:1px solid rgba(255,255,255,0.08);
+
+            backdrop-filter:blur(14px);
+
+            box-shadow:
+            0 0 30px rgba(192,38,211,.08);
+        }
+
+        /* ================= FADE ANIMATION ================= */
+
+        .fade-up{
+
+            animation:fadeUp 1s ease forwards;
+        }
+
+        @keyframes fadeUp{
+
+            from{
+
+                opacity:0;
+                transform:translateY(40px);
+            }
+
+            to{
+
+                opacity:1;
+                transform:translateY(0);
+            }
+
+        }
+
+        /* ================= CARD ================= */
+
+        .card{
+
+            transition:.4s ease;
+        }
+
+        .card:hover{
+
+            transform:translateY(-10px);
+
+            border-color:rgba(216,180,254,.35);
+
+            box-shadow:
+            0 20px 40px rgba(168,85,247,.15);
+        }
+
+        /* ================= BUTTON ================= */
+
+        .btn{
+
+            transition:.3s ease;
+        }
+
+        .btn:hover{
+
+            transform:scale(1.05);
+        }
+
+        /* ================= HERO TITLE ================= */
+
+        .hero-title{
+
+            background:linear-gradient(
+                to right,
+                #f9a8d4,
+                #d8b4fe,
+                #a855f7
+            );
+
+            -webkit-background-clip:text;
+
+            -webkit-text-fill-color:transparent;
+        }
+
+        /* ================= SCROLLBAR ================= */
+
+        ::-webkit-scrollbar{
+            width:8px;
+        }
+
+        ::-webkit-scrollbar-thumb{
+
+            background:#a855f7;
+            border-radius:10px;
+        }

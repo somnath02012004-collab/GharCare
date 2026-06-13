@@ -1,9 +1,8 @@
-
 {% load static %}
 
 {% block content %}
 
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -13,7 +12,7 @@
 
     <title>AC Repair Service</title>
 
-    <!-- Tailwind CSS -->\
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Google Font -->
@@ -21,9 +20,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/ac-from.css' %}">
-
- 
+    <link rel="stylesheet" href="{% static 'css/ac-care.css' %}">
 </head>
 
 <body class="flex items-center justify-center px-4 py-6 text-white">
@@ -54,7 +51,7 @@
                 <!-- Logo -->
 
                 <img
-                    src="GharCare.png"
+                    src="{% static 'assets/GharCare.png' %}"
                     alt="GharCare Logo"
 
                     class="w-[170px] rounded-full md:w-[130px] object-contain
