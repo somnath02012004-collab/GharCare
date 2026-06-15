@@ -68,7 +68,6 @@ def login(request):
 def forgot(request):
     return render(request, 'forgot-pass.html')
 
-
 def signup(request):
 
     if request.method == "POST":
@@ -104,7 +103,6 @@ def signup(request):
     return render(request, 'signup.html', {
         'hide_navbar': True
     })
-
 def register(request):
 
     if request.method == "POST":
@@ -123,4 +121,3 @@ def register(request):
         return redirect('register')
 
     return render(request, 'provider-register.html')
-
