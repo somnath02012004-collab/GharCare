@@ -1,0 +1,119 @@
+*{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:'Poppins',sans-serif;
+            background: linear-gradient(135deg,#020617,#111827,#000000);
+            overflow:hidden;
+            color:white;
+            height:100vh;
+        }
+
+        /* Glass Effect */
+        .glass{
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(16px);
+            border:1px solid rgba(255,255,255,0.08);
+        }
+
+        /* Card Hover */
+        .card-hover{
+            transition:0.4s ease;
+        }
+
+        .card-hover:hover{
+            transform:translateY(-6px);
+            border-color: rgba(251,191,36,0.4);
+            box-shadow:0 0 35px rgba(251,191,36,0.15);
+        }
+
+        /* Floating Animation */
+        .float-animation{
+            animation:float 5s ease-in-out infinite;
+        }
+
+        @keyframes float{
+
+            0%{
+                transform:translateY(0px);
+            }
+
+            50%{
+                transform:translateY(-8px);
+            }
+
+            100%{
+                transform:translateY(0px);
+            }
+
+        }
+
+        /* Fade Animation */
+        .fade-up{
+            animation:fadeUp 1s ease forwards;
+            opacity:0;
+        }
+
+        @keyframes fadeUp{
+
+            from{
+                opacity:0;
+                transform:translateY(30px);
+            }
+
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+
+        }
+
+        /* Shine Effect */
+        .shine-btn{
+            position:relative;
+            overflow:hidden;
+        }
+
+        .shine-btn::before{
+
+            content:'';
+            position:absolute;
+            top:0;
+            left:-100%;
+            width:50%;
+            height:100%;
+
+            background:linear-gradient(
+                120deg,
+                transparent,
+                rgba(255,255,255,0.4),
+                transparent
+            );
+
+            transform:skewX(-25deg);
+
+            animation:shine 4s infinite;
+        }
+
+        @keyframes shine{
+
+            100%{
+                left:150%;
+            }
+
+        }
+
+        /* Profile Glow */
+        .profile-glow{
+            box-shadow:
+            0 0 25px rgba(251,191,36,0.18),
+            0 0 60px rgba(245,158,11,0.10);
+        }
+
+        .fade-up {
+            animation: fadeUp 0.8s ease forwards;
+            opacity: 0;
+        }
