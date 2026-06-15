@@ -160,7 +160,7 @@ def service_providers(request):
 
     return render(
         request,
-        'service_providers.html',
+        'providers.html',
         {
             'providers': providers
         }

@@ -33,35 +33,60 @@
             <ul class="space-y-2">
                 <li>
                     <a href="{% url 'admin_dashboard' %}"
-                    class="block py-3 px-4 bg-cyan-500/10 text-cyan-400 rounded-2xl">
+                    class="block py-3 px-4 rounded-2xl
+                    {% if request.path == '/admins/admin-dashboard/' %}
+                    bg-cyan-500/10 text-cyan-400
+                    {% else %}
+                    hover:bg-white/5
+                    {% endif %}">
                         Bookings
                     </a>
                 </li>
 
                 <li>
                     <a href="{% url 'service_providers' %}"
-                    class="block py-3 px-4 hover:bg-white/5 rounded-2xl transition">
+                    class="block py-3 px-4 rounded-2xl
+                    {% if request.path == '/admins/providers/' %}
+                    bg-cyan-500/10 text-cyan-400
+                    {% else %}
+                    hover:bg-white/5
+                    {% endif %}">
                         Service Providers
                     </a>
                 </li>
 
                 <li>
                     <a href="{% url 'provider_requests' %}"
-                    class="block py-3 px-4 hover:bg-white/5 rounded-2xl transition">
+                    class="block py-3 px-4 rounded-2xl
+                    {% if request.path == '/admins/provider-requests/' %}
+                    bg-cyan-500/10 text-cyan-400
+                    {% else %}
+                    hover:bg-white/5
+                    {% endif %}">
                         Provider Requests
                     </a>
                 </li>
 
                 <li>
                     <a href="{% url 'users_list' %}"
-                    class="block py-3 px-4 hover:bg-white/5 rounded-2xl transition">
-                        Users
+                    class="block py-3 px-4 rounded-2xl
+                    {% if request.path == '/admins/users/' %}
+                    bg-cyan-500/10 text-cyan-400
+                    {% else %}
+                    hover:bg-white/5
+                    {% endif %}">
+                       Users
                     </a>
                 </li>
 
                 <li>
                     <a href="{% url 'services_list' %}"
-                    class="block py-3 px-4 hover:bg-white/5 rounded-2xl transition">
+                    class="block py-3 px-4 rounded-2xl
+                    {% if request.path == '/admins/services/' %}
+                    bg-cyan-500/10 text-cyan-400
+                    {% else %}
+                    hover:bg-white/5
+                    {% endif %}">
                         Services
                     </a>
                 </li>

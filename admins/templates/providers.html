@@ -1,44 +1,82 @@
 
-{% {% extends "base.html" %} base.html %}
-
+{% extends "base.html" %}
 {% load static %}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Providers</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
+{% block content %}
 
-<body class="bg-black text-white p-10">
+<div class="flex-1 p-8">
 
-<h1 class="text-4xl font-bold mb-8">
-    Approved Providers
-</h1>
+    <h1 class="text-4xl font-bold mb-8 text-white">
+        Approved Providers
+    </h1>
 
-<div class="grid md:grid-cols-3 gap-6">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-{% for provider in providers %}
+        {% for provider in providers %}
 
-<div class="bg-zinc-900 rounded-3xl p-6">
+        <div class="bg-zinc-900 rounded-3xl p-6 border border-white/10 hover:border-cyan-500 transition">
 
-    <img src="{{ provider.profile_picture.url }}"
-         class="w-24 h-24 rounded-full mx-auto">
+            <div class="flex justify-center">
 
-    <h2 class="text-center mt-4 text-xl font-bold">
-        {{ provider.full_name }}
-    </h2>
+                {% if provider.profile_picture %}
+                    <img src="{{ provider.profile_picture.url }}"
+                         class="w-24 h-24 rounded-full object-cover">
+                {% else %}
+                    <img src="{% static 'assets/default-user.png' %}"
+                         class="w-24 h-24 rounded-full object-cover">
+                {% endif %}
 
-    <p>{{ provider.service }}</p>
-    <p>{{ provider.phone }}</p>
-    <p>{{ provider.email }}</p>
-    <p>{{ provider.experience }}</p>
+            </div>
+
+            <h2 class="text-center mt-4 text-xl font-bold text-white">
+                {{ provider.full_name }}
+            </h2>
+
+            <div class="mt-4 space-y-2 text-gray-300">
+
+                <p>
+                    <span class="text-cyan-400">Service:</span>
+                    {{ provider.service }}
+                </p>
+
+                <p>
+                    <span class="text-cyan-400">Phone:</span>
+                    {{ provider.phone }}
+                </p>
+
+                <p>
+                    <span class="text-cyan-400">Email:</span>
+                    {{ provider.email }}
+                </p>
+
+                <p>
+                    <span class="text-cyan-400">Experience:</span>
+                    {{ provider.experience }}
+                </p>
+
+                <p>
+                    <span class="text-cyan-400">Status:</span>
+                    {{ provider.status }}
+                </p>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="col-span-3 text-center py-20">
+
+            <h2 class="text-2xl text-gray-400">
+                No Approved Providers Found
+            </h2>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
 
 </div>
 
-{% endfor %}
-
-</div>
-
-</body>
-</html>
+{% endblock content %}
