@@ -1,4 +1,5 @@
-
+from django.contrib.auth import authenticate, login as auth_login
+from .models import ServiceProvider
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -121,3 +122,9 @@ def register(request):
         return redirect('register')
 
     return render(request, 'provider-register.html')
+
+def signup_success(request):
+    return render(request, 'signup_success.html')
+
+def dashboard(request):
+    return render(request, 'dashboard.html')
