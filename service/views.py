@@ -15,6 +15,35 @@ def engineers(request):
         }
     )
 
+
+def engineers(request):
+
+    engineers = ServiceProvider.objects.filter(
+        service="Cleaning Service"
+    )
+
+    return render(
+        request,
+        'cleaning-engineers.html',
+        {
+            'engineers': engineers
+        }
+    )
+
+def engineers(request):
+
+    engineers = ServiceProvider.objects.filter(
+        service="Plumbing Service"
+    )
+
+    return render(
+        request,
+        'plumbing-engineers.html',
+        {
+            'engineers': engineers
+        }
+    )
+
 def acCare(request):
     return render(request, 'ac-care.html')
 

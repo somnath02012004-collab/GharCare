@@ -1,0 +1,90 @@
+body{
+    font-family: 'Poppins', sans-serif;
+    background: #120603;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Orange glow background */
+body::before{
+    content:"";
+    position:fixed;
+    top:-150px;
+    left:-150px;
+    width:500px;
+    height:500px;
+    background: rgba(255,115,0,.15);
+    border-radius:50%;
+    filter: blur(120px);
+    z-index:-1;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    bottom:-150px;
+    right:-150px;
+    width:500px;
+    height:500px;
+    background: rgba(255,80,50,.15);
+    border-radius:50%;
+    filter: blur(120px);
+    z-index:-1;
+}
+
+/* Card Style */
+.glass{
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(20px);
+    border:1px solid rgba(255,120,50,0.15);
+    box-shadow: 0 0 30px rgba(255,120,50,0.08);
+}
+
+/* Hover Effect */
+.card-hover{
+    transition: .4s ease;
+}
+
+.card-hover:hover{
+    transform: translateY(-8px);
+    border-color: rgba(255,140,0,.4);
+    box-shadow: 0 15px 40px rgba(255,120,50,.2);
+}
+
+/* Orange Gradient Text */
+.orange-text{
+    background: linear-gradient(90deg,#ffb366,#ff5a3d);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* Badge */
+.badge-orange{
+    background: rgba(255,120,50,.08);
+    border:1px solid rgba(255,120,50,.25);
+    color:#ffb366;
+}
+
+/* Button */
+.shine-btn{
+    background: linear-gradient(
+        90deg,
+        #ff8a00,
+        #ff5e3a
+    );
+    color:white;
+    font-weight:600;
+}
+
+.shine-btn:hover{
+    transform: scale(1.03);
+}
+
+/* Profile Image */
+img{
+    transition:.4s;
+}
+
+img:hover{
+    transform:scale(1.05);
+}
