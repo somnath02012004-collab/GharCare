@@ -2,207 +2,127 @@
 
 {% block content %}
 
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>AC Engineers</title>
+    <title>Plumbing Service Providers</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/cleaning-engineer.css' %}">
+    <!-- Your Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/plumbers.css' %}">
 </head>
-<body class="px-4 py-10">
+<body class="px-4 py-8">
 
     <!-- Background Glow -->
+    <div class="absolute top-0 left-0 w-96 h-96 bg-lime-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"></div>
 
-    <div class="absolute top-0 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
+    <div class="relative max-w-7xl mx-auto z-10">
 
-    <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <!-- ================= LOGO ================= -->
+        <div class="flex justify-center mb-12 animate-soft">
+            <div class="group flex items-center justify-center p-3 rounded-full
+                        bg-white/5 backdrop-blur-2xl border border-white/10
+                        shadow-2xl shadow-lime-500/10 hover:shadow-emerald-500/20
+                        hover:border-emerald-400/30 transition duration-500">
 
-    <!-- ================= HEADER ================= -->
-
-    <div class="max-w-7xl mx-auto relative z-10">
-
-        <!-- TOP -->
-
-        <div class="text-center mb-14">
-
-            <!-- Logo -->
-
-            <div class="flex justify-center mb-6 animate-soft">
-
-                <div
-                    class="group flex items-center justify-center p-3 rounded-full
-                    bg-white/5 backdrop-blur-2xl
-                    border border-white/10
-                    shadow-2xl shadow-cyan-500/10
-                    hover:shadow-cyan-500/20
-                    hover:border-cyan-400/30
-                    transition duration-500">
-
-                    <img
-                        src="{% static 'assets/GharCare.png' %}"
-                        alt="Logo"
-
-                        class="w-[140px] rounded-full object-contain
-                        drop-shadow-[0_0_25px_rgba(34,211,238,0.25)]
-                        transition duration-500
-                        group-hover:scale-105">
-
-                </div>
-
+                <img src="{% static 'assets/GharCare.png' %}" 
+                     alt="GharCare Logo"
+                     class="w-[170px] md:w-[130px] rounded-full object-contain
+                            drop-shadow-[0_0_25px_rgba(132,204,22,0.25)]
+                            transition duration-500 group-hover:scale-105">
             </div>
-
-            <!-- Badge -->
-
-            <div
-                class="inline-flex items-center gap-2 px-5 py-2 rounded-full
-                bg-white/5 border border-cyan-400/20
-                text-sm tracking-widest uppercase text-cyan-300">
-
-                ✨ Verified Plumbing Workers
-
-            </div>
-
-            <!-- Heading -->
-
-            <h1 class="text-4xl md:text-6xl font-bold mt-6 leading-tight">
-
-                Choose Your <br>
-
-                <span
-                    class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-
-                    Plumbing Worker
-
-                </span>
-
-            </h1>
-
-            <!-- Paragraph -->
-
-            <p class="text-gray-400 text-lg mt-5 max-w-3xl mx-auto leading-relaxed">
-
-                Book trusted Plumbing Worker for
-                maintenance and emergency support directly from GharCare.
-
-            </p>
-
         </div>
 
-        <!-- ================= ENGINEERS GRID ================= -->
+        <!-- ================= TOP SECTION ================= -->
+        <div class="text-center mb-14 animate-soft">
+            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full
+                        bg-white/5 border border-lime-400/20 text-sm tracking-widest 
+                        uppercase text-lime-300 mb-6">
+                🚰 Verified Plumbing Experts
+            </div>
 
-        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+            <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-5 text-white">
+                Choose Your <br>
+                <span class="bg-gradient-to-r from-lime-400 to-emerald-500 bg-clip-text text-transparent">
+                    Plumbing Engineer
+                </span>
+            </h1>
 
-            {% for engineer in engineers %}
+            <p class="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">
+                Browse experienced plumbing professionals, compare ratings and 
+                book your preferred service provider instantly.
+            </p>
+        </div>
+
+        <!-- ================= PROVIDER GRID ================= -->
+        <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
+
+            {% for plumber in plumbers %}
 
             <div class="glass glow rounded-[30px] p-6 card-hover">
 
+                <!-- Profile -->
                 <div class="flex items-center gap-4 mb-5">
-
-                    {% if engineer.profile_picture %}
-                    <img
-                        src="{{ engineer.profile_picture.url }}"
-                        class="w-20 h-20 rounded-2xl object-cover border border-cyan-400/20">
+                    {% if plumber.profile_picture %}
+                        <img src="{{ plumber.profile_picture.url }}" 
+                             class="w-20 h-20 rounded-2xl object-cover border border-white/10">
                     {% else %}
-                    <img
-                        src="{% static 'assets/GharCare.png' %}"
-                        class="w-20 h-20 rounded-2xl object-cover border border-cyan-400/20">
+                        <img src="{% static 'assets/GharCare.png' %}" 
+                             class="w-20 h-20 rounded-2xl object-cover border border-white/10">
                     {% endif %}
 
                     <div>
-
-                        <h2 class="text-2xl font-semibold">
-                            {{ engineer.full_name }}
-                        </h2>
-
-                        <p class="text-cyan-300 text-sm">
-                            {{ engineer.service }}
-                        </p>
-
+                        <h2 class="text-2xl font-semibold">{{ plumber.full_name }}</h2>
+                        <p class="text-lime-300 text-sm">{{ plumber.service }}</p>
                     </div>
-
                 </div>
 
-                <div class="space-y-3 text-sm text-gray-300">
-
-                    <div class="flex justify-between">
-                        <span>Experience</span>
-                        <span class="text-white font-medium">
-                            {{ engineer.experience }}
-                        </span>
+                <!-- Details -->
+                <div class="space-y-3 mb-6">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-400">Experience</span>
+                        <span class="text-white">{{ plumber.experience }}</span>
                     </div>
-
-                    <div class="flex justify-between">
-                        <span>Phone</span>
-                        <span class="text-white font-medium">
-                            {{ engineer.phone }}
-                        </span>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-400">Phone</span>
+                        <span class="text-white">{{ plumber.phone }}</span>
                     </div>
-
-                    <div class="flex justify-between">
-                        <span>Email</span>
-                        <span class="text-white font-medium">
-                            {{ engineer.email }}
-                        </span>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-400">Email</span>
+                        <span class="text-white">{{ plumber.email }}</span>
                     </div>
-
-                    <div class="flex justify-between">
-                        <span>Address</span>
-                        <span class="text-white font-medium">
-                            {{ engineer.address }}
-                        </span>
-                    </div>
-
                 </div>
 
-                <div class="grid grid-cols-2 gap-4 mt-6">
-
-                    <button
-                        class="py-3 rounded-xl bg-white/5 border border-white/10
-                        hover:border-cyan-400/30 transition duration-300">
-
-                        View Profile
-
-                    </button>
-
-                    <button
-                        class="shine-btn py-3 rounded-xl
-                        bg-gradient-to-r from-cyan-500 to-blue-600
-                        font-semibold hover:scale-[1.02]
-                        transition duration-300">
-                        <a href="{% url 'acCare' %}">
-                            Book Now
-                        </a>
-                    </button>
-
+                <!-- Services -->
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="px-3 py-1 rounded-full bg-lime-500/10 text-lime-300 text-xs">Pipe Repair</span>
+                    <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 text-xs">Leakage Fix</span>
+                    <span class="px-3 py-1 rounded-full bg-green-500/10 text-green-300 text-xs">Installation</span>
                 </div>
+
+                <!-- Book Button -->
+                <button class="shine-btn w-full py-3 rounded-xl
+                               bg-gradient-to-r from-lime-500 to-emerald-600
+                               font-semibold hover:scale-[1.02] transition duration-300">
+                    <a href="{% url 'acCare' %}" class="block">Book Engineer</a>
+                </button>
 
             </div>
 
             {% empty %}
 
             <div class="col-span-3 text-center py-12">
-
-                <h2 class="text-3xl font-bold text-gray-300">
-                    No Plumbing Worker Available
-                </h2>
-
-                <p class="text-gray-500 mt-2">
-                    No service provider has registered yet.
-                </p>
-
+                <h2 class="text-3xl font-bold text-gray-300">No Plumbing Engineer Available</h2>
+                <p class="text-gray-500 mt-3">No service provider has registered yet.</p>
             </div>
 
             {% endfor %}
@@ -212,7 +132,6 @@
     </div>
 
 </body>
-
 </html>
 
 {% endblock content %}

@@ -1,0 +1,61 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #050505, #1a0f14, #000000);
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+            color: white;
+        }
+
+        /* Glass */
+        .glass {
+            background: rgba(25, 18, 22, 0.55);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Glow */
+        .glow {
+            box-shadow:
+                0 0 20px rgba(236, 72, 153, 0.12),
+                0 0 60px rgba(244, 114, 182, 0.08);
+        }
+
+        /* Floating */
+        .animate-float {
+            animation: float 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Input */
+        .input-style {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .input-style:focus {
+            border-color: #ec4899;
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.20);
+            outline: none;
+        }
+
+        /* Hover */
+        .card-hover {
+            transition: 0.4s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            border-color: rgba(236, 72, 153, 0.4);
+        }
