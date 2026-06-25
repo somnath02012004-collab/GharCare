@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cleaning Service Providers - GharCare</title>
+    <title>Barber Service Providers - GharCare</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -16,14 +16,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Your CSS -->
-    <link rel="stylesheet" href="{% static 'css/cleaners.css' %}">
+    <!-- Your Barber CSS -->
+    <link rel="stylesheet" href="{% static 'css/barber.css' %}">
 </head>
-<body class="px-4 py-8">
+<body class="px-4 py-8 min-h-screen">
 
     <!-- Background Glow -->
-    <div class="absolute top-0 left-0 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute top-0 left-0 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
 
     <div class="relative max-w-7xl mx-auto z-10">
 
@@ -31,13 +31,13 @@
         <div class="flex justify-center mb-12 animate-float">
             <div class="group flex items-center justify-center p-3 rounded-full
                         bg-white/5 backdrop-blur-2xl border border-white/10
-                        shadow-2xl shadow-orange-500/10 hover:shadow-orange-500/20
-                        hover:border-orange-400/30 transition duration-500">
+                        shadow-2xl shadow-pink-500/10 hover:shadow-pink-500/20
+                        hover:border-pink-400/30 transition duration-500">
 
                 <img src="{% static 'assets/GharCare.png' %}" 
                      alt="GharCare Logo"
                      class="w-[170px] md:w-[130px] rounded-full object-contain
-                            drop-shadow-[0_0_25px_rgba(249,115,22,0.25)]
+                            drop-shadow-[0_0_25px_rgba(236,72,153,0.25)]
                             transition duration-500 group-hover:scale-105">
             </div>
         </div>
@@ -46,37 +46,37 @@
         <div class="text-center mb-14 animate-float">
             <!-- Badge -->
             <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full
-                        bg-white/5 border border-orange-400/20 text-sm tracking-widest 
-                        uppercase text-orange-300 mb-6">
-                ✨ Verified Cleaning Experts
+                        bg-white/5 border border-pink-400/20 text-sm tracking-widest 
+                        uppercase text-pink-300 mb-6">
+                ✂️ Verified Barber Experts
             </div>
 
             <!-- Heading -->
             <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-5 text-white">
                 Choose Your <br>
-                <span class="bg-gradient-to-r from-orange-400 to-amber-500 bg-clip-text text-transparent">
-                    Cleaning Worker
+                <span class="bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent">
+                    Professional Barber
                 </span>
             </h1>
 
             <!-- Paragraph -->
             <p class="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">
-                Book trusted and experienced cleaning professionals for home, 
-                office & deep cleaning services.
+                Book expert barbers for haircut, beard grooming, hair styling 
+                and premium grooming services at your home.
             </p>
         </div>
 
-        <!-- ================= CLEANERS GRID ================= -->
+        <!-- ================= BARBERS GRID ================= -->
         <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
 
-            {% for cleaner in cleaners %}
+            {% for barber in barbers %}
 
             <div class="glass glow rounded-[30px] p-6 card-hover">
 
                 <!-- Profile -->
                 <div class="flex items-center gap-4 mb-5">
-                    {% if cleaner.profile_picture %}
-                        <img src="{{ cleaner.profile_picture.url }}" 
+                    {% if barber.profile_picture %}
+                        <img src="{{ barber.profile_picture.url }}" 
                              class="w-20 h-20 rounded-2xl object-cover border border-white/10">
                     {% else %}
                         <img src="{% static 'assets/GharCare.png' %}" 
@@ -84,8 +84,8 @@
                     {% endif %}
 
                     <div>
-                        <h2 class="text-2xl font-semibold">{{ cleaner.full_name }}</h2>
-                        <p class="text-orange-300 text-sm">{{ cleaner.service }}</p>
+                        <h2 class="text-2xl font-semibold">{{ barber.full_name }}</h2>
+                        <p class="text-pink-300 text-sm">{{ barber.service }}</p>
                     </div>
                 </div>
 
@@ -93,30 +93,30 @@
                 <div class="space-y-3 mb-6">
                     <div class="flex justify-between text-sm">
                         <span class="text-gray-400">Experience</span>
-                        <span class="text-white">{{ cleaner.experience }}</span>
+                        <span class="text-white">{{ barber.experience }}</span>
                     </div>
                     <div class="flex justify-between text-sm">
                         <span class="text-gray-400">Phone</span>
-                        <span class="text-white">{{ cleaner.phone }}</span>
+                        <span class="text-white">{{ barber.phone }}</span>
                     </div>
                     <div class="flex justify-between text-sm">
                         <span class="text-gray-400">Email</span>
-                        <span class="text-white">{{ cleaner.email }}</span>
+                        <span class="text-white">{{ barber.email }}</span>
                     </div>
                 </div>
 
                 <!-- Services -->
                 <div class="flex flex-wrap gap-2 mb-6">
-                    <span class="px-3 py-1 rounded-full bg-orange-500/10 text-orange-300 text-xs">Home Cleaning</span>
-                    <span class="px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 text-xs">Deep Clean</span>
-                    <span class="px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-300 text-xs">Sanitization</span>
+                    <span class="px-3 py-1 rounded-full bg-pink-500/10 text-pink-300 text-xs">Haircut</span>
+                    <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 text-xs">Beard Grooming</span>
+                    <span class="px-3 py-1 rounded-full bg-fuchsia-500/10 text-fuchsia-300 text-xs">Hair Styling</span>
                 </div>
 
                 <!-- Button -->
                 <button class="shine-btn w-full py-3 rounded-xl
-                               bg-gradient-to-r from-orange-500 to-amber-600
+                               bg-gradient-to-r from-pink-500 to-purple-600
                                font-semibold hover:scale-[1.02] transition duration-300">
-                    <a href="{% url 'acCare' %}" class="block">Book Now</a>
+                    <a href="{% url 'acCare' %}" class="block">Book Appointment</a>
                 </button>
 
             </div>
@@ -124,7 +124,7 @@
             {% empty %}
 
             <div class="col-span-3 text-center py-12">
-                <h2 class="text-3xl font-bold text-gray-300">No Cleaning Worker Available</h2>
+                <h2 class="text-3xl font-bold text-gray-300">No Barber Available</h2>
                 <p class="text-gray-500 mt-3">No service provider has registered yet.</p>
             </div>
 

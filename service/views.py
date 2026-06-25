@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from accounts.models import ServiceProvider
 
+
 def engineers(request):
 
     engineers = ServiceProvider.objects.filter(
@@ -14,11 +15,49 @@ def engineers(request):
             'engineers': engineers
         }
     )
+def barbers(request):
 
+    barbers = ServiceProvider.objects.filter(
+        service="Hair Care Service"
+    )
 
-def engineers(request):
+    return render(
+        request,
+        'barber.html',
+        {
+            'barbers': barbers
+        }
+    )
+def beauticians(request):
 
-    engineers = ServiceProvider.objects.filter(
+    beauticians = ServiceProvider.objects.filter(
+        service="Beauty Service"
+    )
+
+    return render(
+        request,
+        'beautician.html',
+        {
+            'beauticians': beauticians
+        }
+    )
+def therapists(request):
+
+    therapists = ServiceProvider.objects.filter(
+        service="Spa Service"
+    )
+
+    return render(
+        request,
+        'therapist.html',
+        {
+            'therapists': therapists
+        }
+    )
+
+def cleaners(request):
+
+    cleaner = ServiceProvider.objects.filter(
         service="Cleaning Service"
     )
 
@@ -26,13 +65,13 @@ def engineers(request):
         request,
         'cleaning-engineers.html',
         {
-            'engineers': engineers
+            'cleaners': cleaners
         }
     )
 
-def engineers(request):
+def plumbers(request):
 
-    engineers = ServiceProvider.objects.filter(
+    plumbers = ServiceProvider.objects.filter(
         service="Plumbing Service"
     )
 
@@ -40,7 +79,7 @@ def engineers(request):
         request,
         'plumbing-engineers.html',
         {
-            'engineers': engineers
+            'plumbers': plumbers
         }
     )
 

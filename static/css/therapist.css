@@ -1,0 +1,114 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #040404, #071a12, #000000);
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Glass Effect */
+        .glass {
+            background: rgba(10, 20, 15, 0.55);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Glow */
+        .glow {
+            box-shadow:
+                0 0 20px rgba(34, 197, 94, 0.10),
+                0 0 60px rgba(16, 185, 129, 0.08);
+        }
+
+        /* Floating Animation */
+        .animate-float {
+            animation: float 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* Input Style */
+        .input-style {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: white;
+        }
+
+        .input-style:focus {
+            border-color: #22c55e;
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.20);
+            outline: none;
+        }
+
+        /* Hover */
+        .card-hover {
+            transition: 0.4s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-6px);
+            border-color: rgba(34, 197, 94, 0.4);
+        }
+
+        /* Shine Button */
+        .shine-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shine-btn::before {
+
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255,255,255,0.45),
+                transparent
+            );
+
+            transform: skewX(-25deg);
+
+            animation: shine 4s infinite;
+        }
+
+        @keyframes shine {
+
+            100% {
+                left: 150%;
+            }
+
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #22c55e;
+            border-radius: 10px;
+        }
